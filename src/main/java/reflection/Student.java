@@ -1,6 +1,24 @@
 package reflection;
 
 public class Student {
+    private String name;
+    private Integer age;
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     //---------------构造方法-------------------
     //（默认的构造方法）
@@ -33,4 +51,8 @@ public class Student {
         System.out.println("私有的构造方法   年龄："+ age);
     }
 
+    public Student(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 }
