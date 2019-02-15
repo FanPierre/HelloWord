@@ -1,0 +1,3394 @@
+Index: src/Anno/Meta.java
+===================================================================
+--- src/Anno/Meta.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Anno/Meta.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,26 +0,0 @@
+-package Anno;
+-
+-
+-import java.lang.reflect.Method;
+-
+-public class Meta {
+-    @MyAnno
+-    public static void myMeta(){
+-        Meta meta = new Meta();
+-        try {
+-            Class<?> c = meta.getClass();
+-            Method myMeta = c.getMethod("myMeta");
+-            MyAnno annotation = myMeta.getAnnotation(MyAnno.class);
+-
+-            System.out.println(annotation.str()+"  "+annotation.val());
+-
+-        }catch (Exception e){
+-            System.out.println("Method Not Found");
+-        }
+-
+-    }
+-
+-    public static void main(String[] args) {
+-        myMeta();
+-    }
+-}
+Index: src/Anno/MyAnno.java
+===================================================================
+--- src/Anno/MyAnno.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Anno/MyAnno.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,11 +0,0 @@
+-package Anno;
+-
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-
+-
+-@Retention(RetentionPolicy.RUNTIME)
+-@interface   MyAnno {
+-    String str() default "Testing";
+-    int val()default 5;
+-}
+Index: src/collection/ArrayListDemo.java
+===================================================================
+--- src/collection/ArrayListDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/collection/ArrayListDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,30 +0,0 @@
+-package collection;
+-
+-import java.util.ArrayList;
+-import java.util.Iterator;
+-import java.lang.Object;
+-import java.util.Random;
+-import java.util.Spliterator;
+-
+-public class ArrayListDemo {
+-    public static void main(String[] args) {
+-        ArrayList<String> arr=new ArrayList<String>();
+-        arr.add("A");
+-        arr.add("B");
+-        arr.add("C");
+-        arr.add("D");
+-        arr.add("E");
+-        arr.forEach(System.out::println);
+-        Iterator<String> iterable=arr.iterator();
+-        System.out.println("相差---------------");
+-        while (iterable.hasNext()){
+-            String element=iterable.next();
+-            System.out.println(element);
+-        }
+-
+-        Spliterator<String> spliterator = arr.spliterator();
+-        while (spliterator.tryAdvance(n ->arr.add(1,"a")));
+-
+-
+-    }
+-}
+Index: src/collection/CollerctionDemo.java
+===================================================================
+--- src/collection/CollerctionDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/collection/CollerctionDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,23 +0,0 @@
+-package collection;
+-
+-import java.util.ArrayList;
+-import java.util.Collections;
+-import java.util.Comparator;
+-
+-public class CollerctionDemo {
+-    public static void main(String[] args) {
+-        ArrayList<String> str = new ArrayList<>();
+-        str.add("1234");
+-        str.add("123");
+-        str.add("222");
+-        str.add("223");
+-        ArrayList<String> str2 = new ArrayList<>();
+-        str2.add("222");
+-        str2.add("224");
+-        //用二分法查找值
+-        int i = Collections.binarySearch(str, "123");
+-        int frequency = Collections.frequency(str, "222");
+-        Comparator<Iterable> objectComparator = Collections.reverseOrder();
+-        System.out.println(frequency);
+-    }
+-}
+Index: src/DecoratorDemo1/Client.java
+===================================================================
+--- src/DecoratorDemo1/Client.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDemo1/Client.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,14 +0,0 @@
+-package DecoratorDemo1;
+-
+-//装饰者例子
+-public class Client {
+-    public static void main(String[] args) {
+-        Component component = new ConcreteComponent();
+-        //第一次修饰
+-        component = new ConcreteDecorator1(component);
+-        //第二次修饰
+-        component = new ConcreteDecorator2(component);
+-        //修饰后运行
+-        component.operate();
+-    }
+-}
+Index: src/DecoratorDemo1/Component.java
+===================================================================
+--- src/DecoratorDemo1/Component.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDemo1/Component.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,12 +0,0 @@
+-package DecoratorDemo1;
+-
+-import java.lang.reflect.Field;
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public abstract class Component {
+-    //抽象的方法
+-    public abstract void operate();
+-
+-}
+-
+Index: src/DecoratorDemo1/ConcreteComponent.java
+===================================================================
+--- src/DecoratorDemo1/ConcreteComponent.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDemo1/ConcreteComponent.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,9 +0,0 @@
+-package DecoratorDemo1;
+-
+-public class ConcreteComponent extends Component {
+-    //具体实现
+-    @Override
+-    public void operate() {
+-        System.out.println("do Something");
+-    }
+-}
+Index: src/DecoratorDemo1/ConcreteDecorator1.java
+===================================================================
+--- src/DecoratorDemo1/ConcreteDecorator1.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDemo1/ConcreteDecorator1.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,19 +0,0 @@
+-package DecoratorDemo1;
+-
+-public class ConcreteDecorator1 extends Decorator {
+-    //定义被修饰者
+-    public ConcreteDecorator1(Component _component){
+-        super(_component);
+-    }
+-    //定义自己的修饰方法
+-    private void method1(){
+-        System.out.println("method1 修饰");
+-    }
+-    //重写父类的Operation方法
+-    public void operate(){
+-        this.method1();
+-        super.operate();
+-    }
+-}
+-
+-
+Index: src/DecoratorDemo1/ConcreteDecorator2.java
+===================================================================
+--- src/DecoratorDemo1/ConcreteDecorator2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDemo1/ConcreteDecorator2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,17 +0,0 @@
+-package DecoratorDemo1;
+-
+-public class ConcreteDecorator2 extends Decorator {
+-    //定义被修饰者
+-    public ConcreteDecorator2(Component _component){
+-        super(_component);
+-    }
+-    //定义自己的修饰方法
+-    private void method2(){
+-        System.out.println("method2修饰");
+-    }
+-    //重写父类的Operation方法
+-    public void operate(){
+-        super.operate();
+-        this.method2();
+-    }
+-}
+Index: src/DecoratorDemo1/Decorator.java
+===================================================================
+--- src/DecoratorDemo1/Decorator.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDemo1/Decorator.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package DecoratorDemo1;
+-
+-public abstract class Decorator extends Component {
+-    private Component component = null;
+-
+-    //通过构造函数传递被修饰者
+-    public Decorator(Component _component){
+-        this.component = _component;
+-    }
+-    //委托给被修饰者执行
+-    @Override
+-    public void operate() {
+-        this.component.operate();
+-    }
+-}
+Index: src/DecoratorDeno2/GiveCurrentTimePhone.java
+===================================================================
+--- src/DecoratorDeno2/GiveCurrentTimePhone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDeno2/GiveCurrentTimePhone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,19 +0,0 @@
+-package DecoratorDeno2;
+-
+-public class GiveCurrentTimePhone extends  PhoneDecorate {
+-    public GiveCurrentTimePhone(Phone phone) {
+-        super(phone);
+-    }
+-
+-    public  void  getTime(){
+-        System.out.println("时间:"+System.currentTimeMillis());
+-    }
+-
+-    @Override
+-    public void Call() {
+-        super.Call();
+-        getTime();
+-    }
+-
+-
+-}
+Index: src/DecoratorDeno2/IPhone.java
+===================================================================
+--- src/DecoratorDeno2/IPhone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDeno2/IPhone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,8 +0,0 @@
+-package DecoratorDeno2;
+-
+-public class IPhone implements Phone {
+-    @Override
+-    public void Call() {
+-        System.out.println("差一步");
+-    }
+-}
+Index: src/DecoratorDeno2/MusicPhone.java
+===================================================================
+--- src/DecoratorDeno2/MusicPhone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDeno2/MusicPhone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,17 +0,0 @@
+-package DecoratorDeno2;
+-
+-public class MusicPhone extends  PhoneDecorate {
+-    public MusicPhone(Phone phone) {
+-        super(phone);
+-    }
+-
+-    public  void muiz(){
+-        System.out.println("就圆满");
+-    }
+-
+-    @Override
+-    public void Call() {
+-        muiz();
+-        super.Call();
+-    }
+-}
+Index: src/DecoratorDeno2/Phone.java
+===================================================================
+--- src/DecoratorDeno2/Phone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDeno2/Phone.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,5 +0,0 @@
+-package DecoratorDeno2;
+-
+-public interface Phone {
+-     void Call();
+-}
+Index: src/DecoratorDeno2/PhoneDecorate.java
+===================================================================
+--- src/DecoratorDeno2/PhoneDecorate.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DecoratorDeno2/PhoneDecorate.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package DecoratorDeno2;
+-
+-public abstract class PhoneDecorate implements  Phone {
+-    private  Phone phone;
+-
+-    public PhoneDecorate(Phone phone) {
+-        this.phone = phone;
+-    }
+-
+-    @Override
+-    public void Call() {
+-        this.phone.Call();
+-
+-    }
+-}
+Index: src/DefaultInterface/MyInterface.java
+===================================================================
+--- src/DefaultInterface/MyInterface.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DefaultInterface/MyInterface.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,9 +0,0 @@
+-package DefaultInterface;
+-
+-public interface MyInterface {
+-    int print();
+-    int printA();
+-    default void printB(){
+-        System.out.println(111);
+-    }
+-}
+Index: src/DefaultInterface/MyInterface2.java
+===================================================================
+--- src/DefaultInterface/MyInterface2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DefaultInterface/MyInterface2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,7 +0,0 @@
+-package DefaultInterface;
+-
+-public interface MyInterface2 {
+-    default void printB(){
+-        System.out.println(11111);
+-    } ;
+-}
+Index: src/DefaultInterface/MyInterfaceImpl.java
+===================================================================
+--- src/DefaultInterface/MyInterfaceImpl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/DefaultInterface/MyInterfaceImpl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,24 +0,0 @@
+-package DefaultInterface;
+-
+-public class MyInterfaceImpl implements MyInterface,MyInterface2 {
+-    @Override
+-    public int print() {
+-        int i = 0;
+-        return i;
+-    }
+-
+-    @Override
+-    public int printA() {
+-        return 0;
+-    }
+-
+-    @Override
+-    public void printB() {
+-        System.out.println(22222);
+-    }
+-
+-    public static void main(String[] args) {
+-        MyInterfaceImpl myInterface = new MyInterfaceImpl();
+-        myInterface.printB();
+-    }
+-}
+Index: src/Exception/ChainExcDemo.java
+===================================================================
+--- src/Exception/ChainExcDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Exception/ChainExcDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,19 +0,0 @@
+-package Exception;
+-
+-public class ChainExcDemo {
+-    static  void demoproc(){
+-        NullPointerException e=new NullPointerException("top layer");
+-        e.initCause(new ArithmeticException("cause"));
+-        throw e;
+-    }
+-
+-    public static void main(String[] args) {
+-        try {
+-//            int [] a={}
+-        }catch (NullPointerException e){
+-            System.out.println("Caught:"+e);
+-            System.out.println("Original cause: "+e.getCause());
+-
+-        }
+-    }
+-}
+Index: src/Exception/ExceptionDemo.java
+===================================================================
+--- src/Exception/ExceptionDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Exception/ExceptionDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,16 +0,0 @@
+-package Exception;
+-
+-public class ExceptionDemo extends Exception {
+-    private String detail;
+-
+-    @Override
+-    public String toString() {
+-        return "ExceptionDemo{" +
+-                "detail='" + detail + '\'' +
+-                '}';
+-    }
+-
+-    public ExceptionDemo(String detail) {
+-        this.detail = detail;
+-    }
+-}
+Index: src/Exception/MultiCatch.java
+===================================================================
+--- src/Exception/MultiCatch.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Exception/MultiCatch.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,12 +0,0 @@
+-package Exception;
+-
+-public class MultiCatch  {
+-
+-    public static void main(String[] args) {
+-       String str="abc";
+-        System.out.println(str.indexOf("c"));
+-
+-
+-
+-    }
+-}
+Index: src/Gen/Gen.java
+===================================================================
+--- src/Gen/Gen.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Gen/Gen.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,18 +0,0 @@
+-package Gen;
+-
+-public class Gen<T> {
+-    T ob;
+-
+-    public Gen(T ob) {
+-        this.ob = ob;
+-    }
+-
+-    public void setOb(T ob) {
+-        this.ob = ob;
+-    }
+-
+-    public T getOb() {
+-        return ob;
+-    }
+-
+-}
+Index: src/Gen/Gen2.java
+===================================================================
+--- src/Gen/Gen2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Gen/Gen2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package Gen;
+-
+-public class Gen2 extends Gen<String> {
+-
+-
+-    public Gen2(String ob) {
+-        super(ob);
+-    }
+-
+-    @Override
+-    public String getOb() {
+-        System.out.println("You called String getob():");
+-        return ob;
+-    }
+-}
+Index: src/Gen/GenDemo.java
+===================================================================
+--- src/Gen/GenDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Gen/GenDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,8 +0,0 @@
+-package Gen;
+-
+-public class GenDemo {
+-    public static void main(String[] args) {
+-
+-
+-    }
+-}
+Index: src/Lambda/BlockLambdaDemo.java
+===================================================================
+--- src/Lambda/BlockLambdaDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/BlockLambdaDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,13 +0,0 @@
+-package Lambda;
+-
+-public class BlockLambdaDemo {
+-    public static void main(String[] args) {
+-        NumericFunc numericFunc=(n) ->{
+-            int result=1;
+-            for (int i=1;i<n;i++)
+-               result= result+i;
+-
+-            return  result;
+-        };
+-    }
+-}
+Index: src/Lambda/GenericFunctionalInterfaceDemo.java
+===================================================================
+--- src/Lambda/GenericFunctionalInterfaceDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/GenericFunctionalInterfaceDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,12 +0,0 @@
+-package Lambda;
+-import java.util.function.*;
+-
+-public class GenericFunctionalInterfaceDemo {
+-    public static void main(String[] args) {
+-        String str="Hello Word!";
+-        char[] chars=new char[5];
+-        str.getChars(0,5,chars,0);
+-        System.out.println(chars);
+-        Thread thread=new Thread(() -> System.out.println());
+-    }
+-}
+Index: src/Lambda/LambdaDemo.java
+===================================================================
+--- src/Lambda/LambdaDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/LambdaDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,32 +0,0 @@
+-package Lambda;
+-
+-import java.awt.*;
+-
+-import java.util.*;
+-import java.util.List;
+-import java.util.stream.Collectors;
+-
+-public class LambdaDemo {
+-    public static void main(String[] args) {
+-
+-        Thread thread = new Thread(() -> System.out.println("hello lambda!"));
+-        thread.start();
+-
+-        List list = Arrays.asList(new String[]{"a", "b", "c"});
+-        Collections.sort(list, new Comparator<String>() {
+-            @Override
+-            public int compare(String o1, String o2) {
+-                return o1.compareTo(o2);
+-            }
+-        });
+-//        Collections.sort(list,(str1,str2) ->str1.compareTo(str2));
+-        List<String> proNames = Arrays.asList(new String[]{"NI", "HAO", "LAMBDA"});
+-        List<String> lowercaseName = new ArrayList<>();
+-        for (String str : proNames
+-        ) {
+-            lowercaseName.add(str.toLowerCase());
+-        }
+-        List<String> lowercaseName1=proNames.stream().map(name ->{return  name.toLowerCase();} ).collect(Collectors.toList());
+-    }
+-
+-}
+Index: src/Lambda/LambdaDemo1.java
+===================================================================
+--- src/Lambda/LambdaDemo1.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/LambdaDemo1.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,5 +0,0 @@
+-package Lambda;
+-
+- interface LambdaDemo1 {
+-    double getValue();
+-}
+Index: src/Lambda/LambdaDemo1Impl.java
+===================================================================
+--- src/Lambda/LambdaDemo1Impl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/LambdaDemo1Impl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,20 +0,0 @@
+-package Lambda;
+-
+-
+-
+-
+-class LambdaDemo1Impl {
+-    interface LambdaDemo1 {
+-        double getValue();
+-    }
+-
+-    public static void main(String[] args) {
+-        LambdaDemo1 lambdaDemo1;
+-        lambdaDemo1=() -> 123.45;
+-        lambdaDemo1=() ->Math.random()*100;
+-        System.out.println(lambdaDemo1.getValue());
+-
+-
+-    }
+-
+-}
+Index: src/Lambda/LambdaDemoParam.java
+===================================================================
+--- src/Lambda/LambdaDemoParam.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/LambdaDemoParam.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,5 +0,0 @@
+-package Lambda;
+-
+-public interface LambdaDemoParam {
+-    boolean test(Object n);
+-}
+Index: src/Lambda/LambdaDemoParamImpl.java
+===================================================================
+--- src/Lambda/LambdaDemoParamImpl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/LambdaDemoParamImpl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,20 +0,0 @@
+-package Lambda;
+-
+-public class LambdaDemoParamImpl {
+-    public static void main(String[] args) {
+-       /* LambdaDemoParam lambdaDemoParam=(n)->(n%2)==0;
+-        System.out.println(lambdaDemoParam);
+-        if(lambdaDemoParam.test(10)){
+-            System.out.println("10 is even");
+-        }*/
+-       LambdaDemoParam lambdaDemoParam=(n)->(n)=="1";
+-        if (lambdaDemoParam.test("1")){
+-            System.out.println("0000");
+-        }
+-        if(lambdaDemoParam.test("10")){
+-            System.out.println("10 is even");
+-        }
+-    }
+-
+-
+-}
+Index: src/Lambda/NumericFunc.java
+===================================================================
+--- src/Lambda/NumericFunc.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/NumericFunc.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,5 +0,0 @@
+-package Lambda;
+-
+-public interface NumericFunc {
+-    int func(int n);
+-}
+Index: src/Lambda/SomeFunc.java
+===================================================================
+--- src/Lambda/SomeFunc.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Lambda/SomeFunc.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,5 +0,0 @@
+-package Lambda;
+-
+-public interface SomeFunc<T> {
+-    T func(T t);
+-}
+Index: src/main/java/Anno/Meta.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Anno/Meta.java	(date 1540974018005)
++++ src/main/java/Anno/Meta.java	(date 1540974018005)
+@@ -0,0 +1,26 @@
++package Anno;
++
++
++import java.lang.reflect.Method;
++
++public class Meta {
++    @MyAnno
++    public static void myMeta(){
++        Meta meta = new Meta();
++        try {
++            Class<?> c = meta.getClass();
++            Method myMeta = c.getMethod("myMeta");
++            MyAnno annotation = myMeta.getAnnotation(MyAnno.class);
++
++            System.out.println(annotation.str()+"  "+annotation.val());
++
++        }catch (Exception e){
++            System.out.println("Method Not Found");
++        }
++
++    }
++
++    public static void main(String[] args) {
++        myMeta();
++    }
++}
+Index: src/main/java/Anno/MyAnno.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Anno/MyAnno.java	(date 1540968750233)
++++ src/main/java/Anno/MyAnno.java	(date 1540968750233)
+@@ -0,0 +1,11 @@
++package Anno;
++
++import java.lang.annotation.Retention;
++import java.lang.annotation.RetentionPolicy;
++
++
++@Retention(RetentionPolicy.RUNTIME)
++@interface   MyAnno {
++    String str() default "Testing";
++    int val()default 5;
++}
+Index: src/main/java/collection/ArrayListDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/collection/ArrayListDemo.java	(date 1541409889612)
++++ src/main/java/collection/ArrayListDemo.java	(date 1541409889612)
+@@ -0,0 +1,30 @@
++package collection;
++
++import java.util.ArrayList;
++import java.util.Iterator;
++import java.lang.Object;
++import java.util.Random;
++import java.util.Spliterator;
++
++public class ArrayListDemo {
++    public static void main(String[] args) {
++        ArrayList<String> arr=new ArrayList<String>();
++        arr.add("A");
++        arr.add("B");
++        arr.add("C");
++        arr.add("D");
++        arr.add("E");
++        arr.forEach(System.out::println);
++        Iterator<String> iterable=arr.iterator();
++        System.out.println("相差---------------");
++        while (iterable.hasNext()){
++            String element=iterable.next();
++            System.out.println(element);
++        }
++
++        Spliterator<String> spliterator = arr.spliterator();
++        while (spliterator.tryAdvance(n ->arr.add(1,"a")));
++
++
++    }
++}
+Index: src/main/java/collection/CollerctionDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/collection/CollerctionDemo.java	(date 1542352946158)
++++ src/main/java/collection/CollerctionDemo.java	(date 1542352946158)
+@@ -0,0 +1,23 @@
++package collection;
++
++import java.util.ArrayList;
++import java.util.Collections;
++import java.util.Comparator;
++
++public class CollerctionDemo {
++    public static void main(String[] args) {
++        ArrayList<String> str = new ArrayList<>();
++        str.add("1234");
++        str.add("123");
++        str.add("222");
++        str.add("223");
++        ArrayList<String> str2 = new ArrayList<>();
++        str2.add("222");
++        str2.add("224");
++        //用二分法查找值
++        int i = Collections.binarySearch(str, "123");
++        int frequency = Collections.frequency(str, "222");
++        Comparator<Iterable> objectComparator = Collections.reverseOrder();
++        System.out.println(frequency);
++    }
++}
+Index: src/main/java/DecoratorDemo1/Client.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDemo1/Client.java	(date 1541384295065)
++++ src/main/java/DecoratorDemo1/Client.java	(date 1541384295065)
+@@ -0,0 +1,14 @@
++package DecoratorDemo1;
++
++//装饰者例子
++public class Client {
++    public static void main(String[] args) {
++        Component component = new ConcreteComponent();
++        //第一次修饰
++        component = new ConcreteDecorator1(component);
++        //第二次修饰
++        component = new ConcreteDecorator2(component);
++        //修饰后运行
++        component.operate();
++    }
++}
+Index: src/main/java/DecoratorDemo1/Component.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDemo1/Component.java	(date 1540890496727)
++++ src/main/java/DecoratorDemo1/Component.java	(date 1540890496727)
+@@ -0,0 +1,12 @@
++package DecoratorDemo1;
++
++import java.lang.reflect.Field;
++import java.util.ArrayList;
++import java.util.List;
++
++public abstract class Component {
++    //抽象的方法
++    public abstract void operate();
++
++}
++
+Index: src/main/java/DecoratorDemo1/ConcreteComponent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDemo1/ConcreteComponent.java	(date 1540890496753)
++++ src/main/java/DecoratorDemo1/ConcreteComponent.java	(date 1540890496753)
+@@ -0,0 +1,9 @@
++package DecoratorDemo1;
++
++public class ConcreteComponent extends Component {
++    //具体实现
++    @Override
++    public void operate() {
++        System.out.println("do Something");
++    }
++}
+Index: src/main/java/DecoratorDemo1/ConcreteDecorator1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDemo1/ConcreteDecorator1.java	(date 1540890496815)
++++ src/main/java/DecoratorDemo1/ConcreteDecorator1.java	(date 1540890496815)
+@@ -0,0 +1,19 @@
++package DecoratorDemo1;
++
++public class ConcreteDecorator1 extends Decorator {
++    //定义被修饰者
++    public ConcreteDecorator1(Component _component){
++        super(_component);
++    }
++    //定义自己的修饰方法
++    private void method1(){
++        System.out.println("method1 修饰");
++    }
++    //重写父类的Operation方法
++    public void operate(){
++        this.method1();
++        super.operate();
++    }
++}
++
++
+Index: src/main/java/DecoratorDemo1/ConcreteDecorator2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDemo1/ConcreteDecorator2.java	(date 1540890496845)
++++ src/main/java/DecoratorDemo1/ConcreteDecorator2.java	(date 1540890496845)
+@@ -0,0 +1,17 @@
++package DecoratorDemo1;
++
++public class ConcreteDecorator2 extends Decorator {
++    //定义被修饰者
++    public ConcreteDecorator2(Component _component){
++        super(_component);
++    }
++    //定义自己的修饰方法
++    private void method2(){
++        System.out.println("method2修饰");
++    }
++    //重写父类的Operation方法
++    public void operate(){
++        super.operate();
++        this.method2();
++    }
++}
+Index: src/main/java/DecoratorDemo1/Decorator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDemo1/Decorator.java	(date 1540890496903)
++++ src/main/java/DecoratorDemo1/Decorator.java	(date 1540890496903)
+@@ -0,0 +1,15 @@
++package DecoratorDemo1;
++
++public abstract class Decorator extends Component {
++    private Component component = null;
++
++    //通过构造函数传递被修饰者
++    public Decorator(Component _component){
++        this.component = _component;
++    }
++    //委托给被修饰者执行
++    @Override
++    public void operate() {
++        this.component.operate();
++    }
++}
+Index: src/main/java/DecoratorDeno2/GiveCurrentTimePhone.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDeno2/GiveCurrentTimePhone.java	(date 1540890496781)
++++ src/main/java/DecoratorDeno2/GiveCurrentTimePhone.java	(date 1540890496781)
+@@ -0,0 +1,19 @@
++package DecoratorDeno2;
++
++public class GiveCurrentTimePhone extends  PhoneDecorate {
++    public GiveCurrentTimePhone(Phone phone) {
++        super(phone);
++    }
++
++    public  void  getTime(){
++        System.out.println("时间:"+System.currentTimeMillis());
++    }
++
++    @Override
++    public void Call() {
++        super.Call();
++        getTime();
++    }
++
++
++}
+Index: src/main/java/DecoratorDeno2/IPhone.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDeno2/IPhone.java	(date 1540890496636)
++++ src/main/java/DecoratorDeno2/IPhone.java	(date 1540890496636)
+@@ -0,0 +1,8 @@
++package DecoratorDeno2;
++
++public class IPhone implements Phone {
++    @Override
++    public void Call() {
++        System.out.println("差一步");
++    }
++}
+Index: src/main/java/DecoratorDeno2/MusicPhone.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDeno2/MusicPhone.java	(date 1540890496672)
++++ src/main/java/DecoratorDeno2/MusicPhone.java	(date 1540890496672)
+@@ -0,0 +1,17 @@
++package DecoratorDeno2;
++
++public class MusicPhone extends  PhoneDecorate {
++    public MusicPhone(Phone phone) {
++        super(phone);
++    }
++
++    public  void muiz(){
++        System.out.println("就圆满");
++    }
++
++    @Override
++    public void Call() {
++        muiz();
++        super.Call();
++    }
++}
+Index: src/main/java/DecoratorDeno2/Phone.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDeno2/Phone.java	(date 1540890496931)
++++ src/main/java/DecoratorDeno2/Phone.java	(date 1540890496931)
+@@ -0,0 +1,5 @@
++package DecoratorDeno2;
++
++public interface Phone {
++     void Call();
++}
+Index: src/main/java/DecoratorDeno2/PhoneDecorate.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DecoratorDeno2/PhoneDecorate.java	(date 1540890496703)
++++ src/main/java/DecoratorDeno2/PhoneDecorate.java	(date 1540890496703)
+@@ -0,0 +1,15 @@
++package DecoratorDeno2;
++
++public abstract class PhoneDecorate implements  Phone {
++    private  Phone phone;
++
++    public PhoneDecorate(Phone phone) {
++        this.phone = phone;
++    }
++
++    @Override
++    public void Call() {
++        this.phone.Call();
++
++    }
++}
+Index: src/main/java/DefaultInterface/MyInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DefaultInterface/MyInterface.java	(date 1540892551089)
++++ src/main/java/DefaultInterface/MyInterface.java	(date 1540892551089)
+@@ -0,0 +1,9 @@
++package DefaultInterface;
++
++public interface MyInterface {
++    int print();
++    int printA();
++    default void printB(){
++        System.out.println(111);
++    }
++}
+Index: src/main/java/DefaultInterface/MyInterface2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DefaultInterface/MyInterface2.java	(date 1540893217546)
++++ src/main/java/DefaultInterface/MyInterface2.java	(date 1540893217546)
+@@ -0,0 +1,7 @@
++package DefaultInterface;
++
++public interface MyInterface2 {
++    default void printB(){
++        System.out.println(11111);
++    } ;
++}
+Index: src/main/java/DefaultInterface/MyInterfaceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/DefaultInterface/MyInterfaceImpl.java	(date 1540893251358)
++++ src/main/java/DefaultInterface/MyInterfaceImpl.java	(date 1540893251358)
+@@ -0,0 +1,24 @@
++package DefaultInterface;
++
++public class MyInterfaceImpl implements MyInterface,MyInterface2 {
++    @Override
++    public int print() {
++        int i = 0;
++        return i;
++    }
++
++    @Override
++    public int printA() {
++        return 0;
++    }
++
++    @Override
++    public void printB() {
++        System.out.println(22222);
++    }
++
++    public static void main(String[] args) {
++        MyInterfaceImpl myInterface = new MyInterfaceImpl();
++        myInterface.printB();
++    }
++}
+Index: src/main/java/Exception/ChainExcDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Exception/ChainExcDemo.java	(date 1540953167570)
++++ src/main/java/Exception/ChainExcDemo.java	(date 1540953167570)
+@@ -0,0 +1,19 @@
++package Exception;
++
++public class ChainExcDemo {
++    static  void demoproc(){
++        NullPointerException e=new NullPointerException("top layer");
++        e.initCause(new ArithmeticException("cause"));
++        throw e;
++    }
++
++    public static void main(String[] args) {
++        try {
++//            int [] a={}
++        }catch (NullPointerException e){
++            System.out.println("Caught:"+e);
++            System.out.println("Original cause: "+e.getCause());
++
++        }
++    }
++}
+Index: src/main/java/Exception/ExceptionDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Exception/ExceptionDemo.java	(date 1540895681895)
++++ src/main/java/Exception/ExceptionDemo.java	(date 1540895681895)
+@@ -0,0 +1,16 @@
++package Exception;
++
++public class ExceptionDemo extends Exception {
++    private String detail;
++
++    @Override
++    public String toString() {
++        return "ExceptionDemo{" +
++                "detail='" + detail + '\'' +
++                '}';
++    }
++
++    public ExceptionDemo(String detail) {
++        this.detail = detail;
++    }
++}
+Index: src/main/java/Exception/MultiCatch.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Exception/MultiCatch.java	(date 1540979003651)
++++ src/main/java/Exception/MultiCatch.java	(date 1540979003651)
+@@ -0,0 +1,12 @@
++package Exception;
++
++public class MultiCatch  {
++
++    public static void main(String[] args) {
++       String str="abc";
++        System.out.println(str.indexOf("c"));
++
++
++
++    }
++}
+Index: src/main/java/Gen/Gen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Gen/Gen.java	(date 1541051406229)
++++ src/main/java/Gen/Gen.java	(date 1541051406229)
+@@ -0,0 +1,18 @@
++package Gen;
++
++public class Gen<T> {
++    T ob;
++
++    public Gen(T ob) {
++        this.ob = ob;
++    }
++
++    public void setOb(T ob) {
++        this.ob = ob;
++    }
++
++    public T getOb() {
++        return ob;
++    }
++
++}
+Index: src/main/java/Gen/Gen2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Gen/Gen2.java	(date 1541051513418)
++++ src/main/java/Gen/Gen2.java	(date 1541051513418)
+@@ -0,0 +1,15 @@
++package Gen;
++
++public class Gen2 extends Gen<String> {
++
++
++    public Gen2(String ob) {
++        super(ob);
++    }
++
++    @Override
++    public String getOb() {
++        System.out.println("You called String getob():");
++        return ob;
++    }
++}
+Index: src/main/java/Gen/GenDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Gen/GenDemo.java	(date 1544509815901)
++++ src/main/java/Gen/GenDemo.java	(date 1544509815901)
+@@ -0,0 +1,34 @@
++package Gen;
++
++import java.lang.reflect.Array;
++import java.util.ArrayList;
++import java.util.Comparator;
++
++public class GenDemo {
++    public static void main(String[] args) {
++
++
++        Comparator<Integer> comparator=new Comparator<Integer>() {
++            @Override
++            public int compare(Integer o1, Integer o2) {
++                if (o1.equals(111)){
++                    return 2;
++                }
++                if (o1.equals(222)){
++                    return 2;
++                }
++                return o1.compareTo(o2);
++            }
++        };
++        ArrayList<Integer> list=new ArrayList();
++        list.add(111);
++        list.add(333);
++        list.add(222);
++        list.sort(comparator);
++        for (Integer i:list
++             ) {
++            System.out.println(i);
++        }
++
++    }
++}
+Index: src/main/java/importExcel/importFile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/importExcel/importFile.java	(date 1548407757579)
++++ src/main/java/importExcel/importFile.java	(date 1548407757579)
+@@ -0,0 +1,38 @@
++package importExcel;
++
++import org.apache.poi.hssf.usermodel.HSSFWorkbook;
++
++import java.io.File;
++import java.io.FileInputStream;
++import java.io.InputStream;
++
++public class importFile {
++    public static void main(String[] args) {
++        try {
++            InputStream inputStream=new FileInputStream("C:\\Users\\DKP17002\\Documents\\Tencent Files\\1114376529\\FileRecv\\POS数据补录导入模板-卜蜂莲花11月111.xlsx");
++            HSSFWorkbook hssfWorkbook =new HSSFWorkbook(inputStream);
++
++            //1.检查文件是否存在
++          /*  if(checkFile())*/
++            //2.获取excel里的sheet
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++
++    }
++
++    private static Boolean checkFile(File oldfile){
++       /* FileItem fileItem=new DiskFileItem(oldfile.getName(),Files.probeContentType(path)ntentType(oldfile.getPath()));
++
++
++        MultipartFile file;
++        if (file.isEmpty()){
++            return false;
++        }
++        String fileName = file.getOriginalFilename();
++        if (!fileName.endsWith("xls") && !fileName.endsWith("xlsx")){
++            return  false;
++        }*/
++        return  true;
++    }
++}
+Index: src/main/java/internet/InterAddressClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/internet/InterAddressClass.java	(date 1548410691958)
++++ src/main/java/internet/InterAddressClass.java	(date 1548410691958)
+@@ -0,0 +1,9 @@
++package internet;
++
++public class InterAddressClass {
++    public static void main(String[] args) {
++//        InetAddress inetAddress=new InetAddress();
++//        inetAddress.getHostAddress();
++
++    }
++}
+Index: src/main/java/introspector/IntrospectorTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/introspector/IntrospectorTest.java	(date 1544513165137)
++++ src/main/java/introspector/IntrospectorTest.java	(date 1544513165137)
+@@ -0,0 +1,26 @@
++package introspector;
++
++import java.beans.BeanInfo;
++import java.beans.Introspector;
++import java.beans.PropertyDescriptor;
++import java.lang.reflect.Method;
++
++public class IntrospectorTest {
++    public static void main(String[] args) {
++        try {
++            BeanInfo beanInfo = Introspector.getBeanInfo(Student.class, Object.class);
++            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
++            for (PropertyDescriptor propertyDescriptor : propertyDescriptors
++                    ) {
++                String name = propertyDescriptor.getName();
++                Method readMethod = propertyDescriptor.getReadMethod();
++                Object aa = readMethod.invoke("aa");
++                System.out.println(aa);
++            }
++
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++
++    }
++}
+Index: src/main/java/introspector/Student.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/introspector/Student.java	(date 1544511001290)
++++ src/main/java/introspector/Student.java	(date 1544511001290)
+@@ -0,0 +1,22 @@
++package introspector;
++
++public class Student {
++
++    private String name; //这些是字段！！不是javabean的属性
++    private int age;
++    public String getName() {
++        return name;
++    }
++    public void setName(String name) {
++        this.name = name;
++    }
++    public int getAge() {
++        return age;
++    }
++    public void setAge(int age) {
++        this.age = age;
++    }
++    public String getAbc() {
++        return null;
++    }
++}
+Index: src/main/java/Lambda/BlockLambdaDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/BlockLambdaDemo.java	(date 1541063020084)
++++ src/main/java/Lambda/BlockLambdaDemo.java	(date 1541063020084)
+@@ -0,0 +1,13 @@
++package Lambda;
++
++public class BlockLambdaDemo {
++    public static void main(String[] args) {
++        NumericFunc numericFunc=(n) ->{
++            int result=1;
++            for (int i=1;i<n;i++)
++               result= result+i;
++
++            return  result;
++        };
++    }
++}
+Index: src/main/java/Lambda/GenericFunctionalInterfaceDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/GenericFunctionalInterfaceDemo.java	(date 1541126093238)
++++ src/main/java/Lambda/GenericFunctionalInterfaceDemo.java	(date 1541126093238)
+@@ -0,0 +1,12 @@
++package Lambda;
++import java.util.function.*;
++
++public class GenericFunctionalInterfaceDemo {
++    public static void main(String[] args) {
++        String str="Hello Word!";
++        char[] chars=new char[5];
++        str.getChars(0,5,chars,0);
++        System.out.println(chars);
++        Thread thread=new Thread(() -> System.out.println());
++    }
++}
+Index: src/main/java/Lambda/LambdaDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/LambdaDemo.java	(date 1541058442592)
++++ src/main/java/Lambda/LambdaDemo.java	(date 1541058442592)
+@@ -0,0 +1,32 @@
++package Lambda;
++
++import java.awt.*;
++
++import java.util.*;
++import java.util.List;
++import java.util.stream.Collectors;
++
++public class LambdaDemo {
++    public static void main(String[] args) {
++
++        Thread thread = new Thread(() -> System.out.println("hello lambda!"));
++        thread.start();
++
++        List list = Arrays.asList(new String[]{"a", "b", "c"});
++        Collections.sort(list, new Comparator<String>() {
++            @Override
++            public int compare(String o1, String o2) {
++                return o1.compareTo(o2);
++            }
++        });
++//        Collections.sort(list,(str1,str2) ->str1.compareTo(str2));
++        List<String> proNames = Arrays.asList(new String[]{"NI", "HAO", "LAMBDA"});
++        List<String> lowercaseName = new ArrayList<>();
++        for (String str : proNames
++        ) {
++            lowercaseName.add(str.toLowerCase());
++        }
++        List<String> lowercaseName1=proNames.stream().map(name ->{return  name.toLowerCase();} ).collect(Collectors.toList());
++    }
++
++}
+Index: src/main/java/Lambda/LambdaDemo1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/LambdaDemo1.java	(date 1541058896896)
++++ src/main/java/Lambda/LambdaDemo1.java	(date 1541058896896)
+@@ -0,0 +1,5 @@
++package Lambda;
++
++ interface LambdaDemo1 {
++    double getValue();
++}
+Index: src/main/java/Lambda/LambdaDemo1Impl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/LambdaDemo1Impl.java	(date 1544524210554)
++++ src/main/java/Lambda/LambdaDemo1Impl.java	(date 1544524210554)
+@@ -0,0 +1,20 @@
++package Lambda;
++
++
++
++
++class LambdaDemo1Impl {
++    interface LambdaDemo1 {
++        double getValue();
++    }
++
++    public static void main(String[] args) {
++        LambdaDemo1 lambdaDemo1;
++        lambdaDemo1=() -> 123.45;
++        lambdaDemo1=() ->Math.random()*100;
++        System.out.println(lambdaDemo1.getValue());
++
++
++    }
++
++}
+Index: src/main/java/Lambda/LambdaDemoParam.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/LambdaDemoParam.java	(date 1541061377664)
++++ src/main/java/Lambda/LambdaDemoParam.java	(date 1541061377664)
+@@ -0,0 +1,5 @@
++package Lambda;
++
++public interface LambdaDemoParam {
++    boolean test(Object n);
++}
+Index: src/main/java/Lambda/LambdaDemoParamImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/LambdaDemoParamImpl.java	(date 1541061268860)
++++ src/main/java/Lambda/LambdaDemoParamImpl.java	(date 1541061268860)
+@@ -0,0 +1,20 @@
++package Lambda;
++
++public class LambdaDemoParamImpl {
++    public static void main(String[] args) {
++       /* LambdaDemoParam lambdaDemoParam=(n)->(n%2)==0;
++        System.out.println(lambdaDemoParam);
++        if(lambdaDemoParam.test(10)){
++            System.out.println("10 is even");
++        }*/
++       LambdaDemoParam lambdaDemoParam=(n)->(n)=="1";
++        if (lambdaDemoParam.test("1")){
++            System.out.println("0000");
++        }
++        if(lambdaDemoParam.test("10")){
++            System.out.println("10 is even");
++        }
++    }
++
++
++}
+Index: src/main/java/Lambda/NumericFunc.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/NumericFunc.java	(date 1541062648633)
++++ src/main/java/Lambda/NumericFunc.java	(date 1541062648633)
+@@ -0,0 +1,5 @@
++package Lambda;
++
++public interface NumericFunc {
++    int func(int n);
++}
+Index: src/main/java/Lambda/SomeFunc.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Lambda/SomeFunc.java	(date 1541063176081)
++++ src/main/java/Lambda/SomeFunc.java	(date 1541063176081)
+@@ -0,0 +1,5 @@
++package Lambda;
++
++public interface SomeFunc<T> {
++    T func(T t);
++}
+Index: src/main/java/MapTest/HashMapTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/MapTest/HashMapTest.java	(date 1549005300140)
++++ src/main/java/MapTest/HashMapTest.java	(date 1549005300140)
+@@ -0,0 +1,28 @@
++package MapTest;
++
++import java.util.HashMap;
++import java.util.Iterator;
++import java.util.Map;
++import java.util.Set;
++
++public class HashMapTest {
++    public static void main(String[] args) {
++        HashMap<String, Double> hashMap = new HashMap<String, Double>();
++        hashMap.put("zhangsan", 222d);
++        hashMap.put("lisi", 111.1);
++        Set<Map.Entry<String, Double>> set = hashMap.entrySet();
++        Set<String> mapSet = hashMap.keySet();
++        Iterator<String> iterator = mapSet.iterator();
++        while (iterator.hasNext()){
++
++        }
++
++        for (Map.Entry<String, Double> me : set
++        ) {
++            if (me.getKey() == "zhangsan") {
++                System.out.println(me.getKey());
++                System.out.println(me.getValue());
++            }
++        }
++    }
++}
+Index: src/main/java/methodQuote/methodQuote.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/methodQuote/methodQuote.java	(date 1541399510447)
++++ src/main/java/methodQuote/methodQuote.java	(date 1541399510447)
+@@ -0,0 +1,17 @@
++package methodQuote;
++
++public class methodQuote {
++
++    static  String stringop(StringFunc sf,String s){
++        return sf.func(s);
++    }
++
++    public static void main(String[] args) {
++        String inStr="lambdas add power to java";
++        String outStr;
++        outStr=stringop(MyStringOps::strReverses,inStr);
++        System.out.println("out: "+outStr);
++        System.out.println("inS: "+inStr);
++    }
++
++}
+Index: src/main/java/methodQuote/MyStringOps.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/methodQuote/MyStringOps.java	(date 1541403473222)
++++ src/main/java/methodQuote/MyStringOps.java	(date 1541403473222)
+@@ -0,0 +1,15 @@
++package methodQuote;
++
++public class MyStringOps {
++    static  String strReverses(String str){
++        String result="";
++        int i;
++        for (i=str.length()-1;i>=0;i--){
++            result+=str.charAt(i);
++
++        }
++        return result;
++    }
++
++
++}
+Index: src/main/java/methodQuote/StringFunc.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/methodQuote/StringFunc.java	(date 1541398451119)
++++ src/main/java/methodQuote/StringFunc.java	(date 1541398451119)
+@@ -0,0 +1,5 @@
++package methodQuote;
++
++public interface StringFunc {
++    String func(String n);
++}
+Index: src/main/java/MethodReference/Car.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/MethodReference/Car.java	(date 1541140061130)
++++ src/main/java/MethodReference/Car.java	(date 1541140061130)
+@@ -0,0 +1,30 @@
++package MethodReference;
++
++import java.util.Arrays;
++import java.util.List;
++
++public class Car {
++    public static Car create(final Supplier<Car> supplier){
++        System.out.println("cat 构造方法");
++        return supplier.get();
++    }
++
++    public static  void colliet(final Car car){
++        System.out.println("Collided " + car.toString());
++    }
++
++    public void follow (final Car anther){
++        System.out.println("Following the "+anther.toString());
++    }
++    public void  repair(){
++        System.out.println("Repai");
++    }
++
++    public static void main(String[] args) {
++        final Car car =Car.create(Car::new);
++        final List<Car> cars= Arrays.asList(car);
++        cars.forEach(Car::repair);
++
++
++    }
++}
+Index: src/main/java/MethodReference/Java8Tester.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/MethodReference/Java8Tester.java	(date 1541146069524)
++++ src/main/java/MethodReference/Java8Tester.java	(date 1541146069524)
+@@ -0,0 +1,123 @@
++package MethodReference;
++
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
++
++public class Java8Tester {
++    public static void main(String[] args) {
++        // 计算空字符串
++        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
++        System.out.println("列表: " +strings);
++        long count = getCountEmptyStringUsingJava7(strings);
++        System.out.println(count);
++        count=getCountLength3UsingJava7(strings);
++        System.out.println(count);
++
++    }
++
++    private static int getCountEmptyStringUsingJava7(List<String> strings){
++        int count = 0;
++
++        for(String string: strings){
++
++            if(string.isEmpty()){
++                count++;
++            }
++        }
++        return count;
++    }
++
++    private static int getCountLength3UsingJava7(List<String> strings){
++        int count = 0;
++
++        for(String string: strings){
++
++            if(string.length() == 3){
++                count++;
++            }
++        }
++        return count;
++    }
++
++    private static List<String> deleteEmptyStringsUsingJava7(List<String> strings){
++        List<String> filteredList = new ArrayList<String>();
++
++        for(String string: strings){
++
++            if(!string.isEmpty()){
++                filteredList.add(string);
++            }
++        }
++        return filteredList;
++    }
++
++    private static String getMergedStringUsingJava7(List<String> strings, String separator){
++        StringBuilder stringBuilder = new StringBuilder();
++
++        for(String string: strings){
++
++            if(!string.isEmpty()){
++                stringBuilder.append(string);
++                stringBuilder.append(separator);
++            }
++        }
++        String mergedString = stringBuilder.toString();
++        return mergedString.substring(0, mergedString.length()-2);
++    }
++
++    private static List<Integer> getSquares(List<Integer> numbers){
++        List<Integer> squaresList = new ArrayList<Integer>();
++
++        for(Integer number: numbers){
++            Integer square = new Integer(number.intValue() * number.intValue());
++
++            if(!squaresList.contains(square)){
++                squaresList.add(square);
++            }
++        }
++        return squaresList;
++    }
++
++    private static int getMax(List<Integer> numbers){
++        int max = numbers.get(0);
++
++        for(int i=1;i < numbers.size();i++){
++
++            Integer number = numbers.get(i);
++
++            if(number.intValue() > max){
++                max = number.intValue();
++            }
++        }
++        return max;
++    }
++
++    private static int getMin(List<Integer> numbers){
++        int min = numbers.get(0);
++
++        for(int i=1;i < numbers.size();i++){
++            Integer number = numbers.get(i);
++
++            if(number.intValue() < min){
++                min = number.intValue();
++            }
++        }
++        return min;
++    }
++
++    private static int getSum(List numbers){
++        int sum = (int)(numbers.get(0));
++
++        for(int i=1;i < numbers.size();i++){
++            sum += (int)numbers.get(i);
++        }
++        return sum;
++    }
++
++    private static int getAverage(List<Integer> numbers){
++        return getSum(numbers) / numbers.size();
++    }
++
++
++}
+Index: src/main/java/MethodReference/Supplier.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/MethodReference/Supplier.java	(date 1541130782385)
++++ src/main/java/MethodReference/Supplier.java	(date 1541130782385)
+@@ -0,0 +1,6 @@
++package MethodReference;
++
++@FunctionalInterface
++public interface Supplier<T> {
++    T get();
++}
+Index: src/main/java/Optional/Java8TestRr.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Optional/Java8TestRr.java	(date 1541147911574)
++++ src/main/java/Optional/Java8TestRr.java	(date 1541147911574)
+@@ -0,0 +1,15 @@
++package Optional;
++
++import MethodReference.Java8Tester;
++
++import java.util.Optional;
++
++public class Java8TestRr {
++    public static void main(String[] args) {
++        Java8TestRr Java8Tester=new Java8TestRr();
++        Integer integer=null;
++        Integer integer1 = new Integer(10);
++        Optional<Integer> Integer=Optional.ofNullable(integer);
++
++    }
++}
+Index: src/main/java/reflection/A.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/reflection/A.java	(date 1542353845923)
++++ src/main/java/reflection/A.java	(date 1542353845923)
+@@ -0,0 +1,53 @@
++package reflection;
++
++import java.util.Objects;
++
++public class A {
++    private String Test1;
++    private String Test2;
++
++    public String getTest1() {
++        return Test1;
++    }
++
++    public A(String test1, String test2) {
++        Test1 = test1;
++        Test2 = test2;
++    }
++
++    public String getTest2() {
++        return Test2;
++    }
++
++    public void setTest1(String test1) {
++        Test1 = test1;
++    }
++
++    public void setTest2(String test2) {
++        Test2 = test2;
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) return true;
++        if (o == null || getClass() != o.getClass()) return false;
++        A a = (A) o;
++        return Objects.equals(Test1, a.Test1) &&
++                Objects.equals(Test2, a.Test2);
++    }
++
++    @Override
++    public int hashCode() {
++        return Objects.hash(Test1, Test2);
++    }
++
++    @Override
++    public String toString() {
++        return "A{" +
++                "Test1='" + Test1 + '\'' +
++                ", Test2='" + Test2 + '\'' +
++                '}';
++    }
++
++
++}
+Index: src/main/java/reflection/Constructors.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/reflection/Constructors.java	(date 1541397274961)
++++ src/main/java/reflection/Constructors.java	(date 1541397274961)
+@@ -0,0 +1,61 @@
++package fanshe;
++
++import java.lang.reflect.Constructor;
++
++
++/*
++ * 通过Class对象可以获取某个类中的：构造方法、成员变量、成员方法；并访问成员；
++ *
++ * 1.获取构造方法：
++ * 		1).批量的方法：
++ * 			public Constructor[] getConstructors()：所有"公有的"构造方法
++            public Constructor[] getDeclaredConstructors()：获取所有的构造方法(包括私有、受保护、默认、公有)
++
++ * 		2).获取单个的方法，并调用：
++ * 			public Constructor getConstructor(Class... parameterTypes):获取单个的"公有的"构造方法：
++ * 			public Constructor getDeclaredConstructor(Class... parameterTypes):获取"某个构造方法"可以是私有的，或受保护、默认、公有；
++ *
++ * 			调用构造方法：
++ * 			Constructor-->newInstance(Object... initargs)
++ */
++public class Constructors {
++
++    public static void main(String[] args) throws Exception {
++        //1.加载Class对象
++        Class clazz = Class.forName("reflection.Student");
++
++
++        //2.获取所有公有构造方法
++        System.out.println("**********************所有公有构造方法*********************************");
++        Constructor[] conArray = clazz.getConstructors();
++        for(Constructor c : conArray){
++            System.out.println(c);
++        }
++
++
++        System.out.println("************所有的构造方法(包括：私有、受保护、默认、公有)***************");
++        conArray = clazz.getDeclaredConstructors();
++        for(Constructor c : conArray){
++            System.out.println(c);
++        }
++
++        System.out.println("*****************获取公有、无参的构造方法*******************************");
++        Constructor con = clazz.getConstructor(null);
++        //1>、因为是无参的构造方法所以类型是一个null,不写也可以：这里需要的是一个参数的类型，切记是类型
++        //2>、返回的是描述这个无参构造函数的类对象。
++
++        System.out.println("con = " + con);
++        //调用构造方法
++        Object obj = con.newInstance();
++        //	System.out.println("obj = " + obj);
++        //	Student stu = (Student)obj;
++
++        System.out.println("******************获取私有构造方法，并调用*******************************");
++        con = clazz.getDeclaredConstructor(char.class);
++        System.out.println(con);
++        //调用构造方法
++        con.setAccessible(true);//暴力访问(忽略掉访问修饰符)
++        obj = con.newInstance('男');
++    }
++
++}
+Index: src/main/java/reflection/MethodDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/reflection/MethodDemo.java	(date 1549016604504)
++++ src/main/java/reflection/MethodDemo.java	(date 1549016604504)
+@@ -0,0 +1,136 @@
++package reflection;
++
++
++import java.lang.reflect.InvocationTargetException;
++import java.lang.reflect.Method;
++import java.util.HashMap;
++
++/**
++ * 反射技术：其实就是动态加载一个指定的类，并获取该类中的所有的内容。并将字节码文件中的内容都封装成对象，这样便于操作这些成员。简单说：反射技术可以对一个类进行解剖。
++
++
++
++ 反射的好处：大大的增强了程序的扩展性。
++
++
++
++ 反射的基本步骤：
++
++ 1、获得Class对象，就是获取到指定的名称的字节码文件对象。
++
++ 2、实例化对象，获得类的属性、方法或构造函数。
++
++ 3、访问属性、调用方法、调用构造函数创建对象。
++
++
++ */
++
++public class MethodDemo {
++
++    private long times = 100_100_100L;
++    private Student student;
++    private String formatter = "%s %d times using %d ms";
++
++    public  void setUp(){
++        student=new Student();
++        student.setName("222");
++    }
++
++
++
++    public void directGet() {
++       /* StopWatch stopWatch=StopWatch.createStarted();
++        for (long i=0;i<times;i++){
++            student.getName();
++        }
++        stopWatch.stop();
++        long splitNanoTime = stopWatch.getSplitNanoTime();
++        String directGet = String.format(formatter, "directGet", times, splitNanoTime);
++        System.out.println(directGet);*/
++
++    }
++
++
++    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
++
++        Student student = new Student();
++        Class<? extends Student> aClass = student.getClass();
++
++        HashMap hashMap = new HashMap();
++
++        try {
++            //获取字节码
++            Class<?> stuClass = Class.forName("reflection.Student");
++            Class clazz2 = Student.class;
++            //创建对象
++            Object obj = new Student();
++
++            Class<?> aClass1 = obj.getClass();
++            Object o = aClass1.newInstance();
++
++            Method[] methods = stuClass.getMethods();
++
++/*            for (Method method:methods
++                 ) {
++                System.out.println(method);
++
++            }*/
++
++            //方法:2 运行私有方法
++            Method[] declaredMethods = stuClass.getDeclaredMethods();
++            Method method1 = stuClass.getDeclaredMethod("setAge", Integer.class);
++            method1.setAccessible(true);
++            System.out.println(method1);
++
++            //方法3 执行方法
++            Method setName = stuClass.getMethod("setName", String.class);
++            method1.invoke(o);
++
++
++        } catch (ClassNotFoundException e) {
++            e.printStackTrace();
++        }
++
++        MethodDemo methodDemo=new MethodDemo();
++        methodDemo.directGet();
++
++
++
++
++       /* //方法二 通过java Class自带的反射获得method ，仅进行一次method 方法的获取
++
++        Method getName = reflection.Student.class.getMethod("getName");
++        StopWatch stopWatch = StopWatch.createStarted();
++       *//* reflection.Student student1=new reflection.Student();
++        Object invoke = getName.invoke(student1);
++*//*
++
++        //方法一
++
++        Class<? extends reflection.Student> aClass = student.getClass();
++        Field[] fields = FieldUtil.getFields(aClass);
++        try {
++            for (Field field : fields
++                    ) {
++                field.setAccessible(true);
++                field.set("name", "123");
++
++                System.out.println(student.getName());
++            }
++        } catch (Exception e) {
++            e.printStackTrace();
++        }*/
++
++    }
++
++   /* private void classDemo(Object A,Object B) throws InvocationTargetException, IllegalAccessException {
++        Method[] methodsA = A.getClass().getMethods();
++        Method[] methodsB = B.getClass().getMethods();
++        for (Method method:methodsA
++             ) {
++            method.invoke(A,B);
++        }
++    }*/
++
++
++}
+Index: src/main/java/reflection/Student.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/reflection/Student.java	(date 1549007434338)
++++ src/main/java/reflection/Student.java	(date 1549007434338)
+@@ -0,0 +1,58 @@
++package reflection;
++
++public class Student {
++    private String name;
++    private Integer age;
++
++    public Integer getAge() {
++        return age;
++    }
++
++    public void setAge(Integer age) {
++        this.age = age;
++    }
++
++    public String getName() {
++        return name;
++    }
++
++    public void setName(String name) {
++        this.name = name;
++    }
++
++    //---------------构造方法-------------------
++    //（默认的构造方法）
++    Student(String str){
++        System.out.println("(默认)的构造方法 s = " + str);
++    }
++
++    //无参构造方法
++    public Student(){
++        System.out.println("调用了公有、无参构造方法执行了。。。");
++    }
++
++    //有一个参数的构造方法
++    public Student(char name){
++        System.out.println("姓名：" + name);
++    }
++
++    //有多个参数的构造方法
++    public Student(String name ,int age){
++        System.out.println("姓名："+name+"年龄："+ age);//这的执行效率有问题，以后解决。
++    }
++
++    //受保护的构造方法
++    protected Student(boolean n){
++        System.out.println("受保护的构造方法 n = " + n);
++    }
++
++    //私有构造方法
++    private Student(int age){
++        System.out.println("私有的构造方法   年龄："+ age);
++    }
++
++    public Student(String name, Integer age) {
++        this.name = name;
++        this.age = age;
++    }
++}
+Index: src/main/java/simpleDemo/singletonDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/simpleDemo/singletonDemo.java	(date 1542075541373)
++++ src/main/java/simpleDemo/singletonDemo.java	(date 1542075541373)
+@@ -0,0 +1,16 @@
++package simpleDemo;
++
++public class singletonDemo {
++
++    private final static singletonDemo singleton = new singletonDemo();
++
++    private singletonDemo() {
++
++    }
++
++    public static singletonDemo getSimpleDemo() {
++        return singleton;
++
++    }
++
++}
+Index: src/main/java/simpleDemo/singletonDemo1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/simpleDemo/singletonDemo1.java	(date 1542076092329)
++++ src/main/java/simpleDemo/singletonDemo1.java	(date 1542076092329)
+@@ -0,0 +1,15 @@
++package simpleDemo;
++
++//静态内部类
++public class singletonDemo1 {
++
++    private singletonDemo1(){};
++
++    private static class singletonInstance{
++         private static final singletonDemo1 singletonInstarnce=new singletonDemo1();
++    }
++
++    public static singletonDemo1 getInstance(){
++        return singletonInstance.singletonInstarnce;
++    }
++}
+Index: src/main/java/simpleDemo/singletonDemo2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/simpleDemo/singletonDemo2.java	(date 1542076422721)
++++ src/main/java/simpleDemo/singletonDemo2.java	(date 1542076422721)
+@@ -0,0 +1,19 @@
++package simpleDemo;
++
++//双重检查
++public class singletonDemo2 {
++    private static volatile singletonDemo2 singleton;
++
++    private singletonDemo2(){};
++
++    public static singletonDemo2 getInstance(){
++        if (singleton==null){
++            synchronized(singletonDemo2.class){
++                if (singleton == null){
++                    return new singletonDemo2();
++                }
++            }
++        }
++        return  singleton;
++    }
++}
+Index: src/main/java/Test/same.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Test/same.js	(date 1541147974197)
++++ src/main/java/Test/same.js	(date 1541147974197)
+@@ -0,0 +1,1 @@
++print("Hello Word");
+\ No newline at end of file
+Index: src/main/java/Test/staticImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Test/staticImpl.java	(date 1540979790161)
++++ src/main/java/Test/staticImpl.java	(date 1540979790161)
+@@ -0,0 +1,15 @@
++package Test;
++
++import static java.lang.Math.pow;
++import static java.lang.StrictMath.sqrt;
++
++public class staticImpl {
++    public static void main(String[] args) {
++        double side1,side2;
++        double hypot;
++        side1=3.0;
++        side2=4.0;
++        hypot=sqrt(pow(side1,2))+pow(side2,2);
++
++    }
++}
+Index: src/main/java/Test/test.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Test/test.java	(date 1542009660872)
++++ src/main/java/Test/test.java	(date 1542009660872)
+@@ -0,0 +1,55 @@
++package Test;
++
++
++import java.util.ArrayList;
++import java.util.TreeSet;
++
++public class test {
++ /*   public void Test(){
++        T vals[];
++    }*/
++
++    public static void main(String[] args) {
++/*        Runtime runtime = Runtime.getRuntime();
++        long mem1,mem2;
++        Integer someints[]=new Integer[1000];
++        mem1 = runtime.freeMemory();
++        System.out.println("Total memory is:"+ runtime.totalMemory());
++        mem1= runtime.freeMemory();
++        System.out.println("Initial free memory:"+ mem1);
++        runtime.gc();
++        mem1=runtime.freeMemory();
++        System.out.println("Free memory "+mem1);
++
++        for (int i=0;i<1000;i++)
++            someints=new Integer[i];
++
++        mem2=runtime.freeMemory();
++        System.out.println("Free memory after allocation:" + mem2);
++        System.out.println(mem2-mem1);
++
++
++
++        Class<?> cla = test.class.getClass();*/
++
++        /*List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
++
++        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
++
++        System.out.println("列表中最大的数 : " + stats.getMax());
++        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
++        List<String> filed=strings.stream().filter(string->!string.isEmpty()).collect(Collectors.toList());
++        List<Integer> number2 = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
++
++        List<Integer> integers = number2.stream().map(i -> i * i).distinct().collect(Collectors.toList());
++
++        number2.forEach(System.out::println);
++        System.out.println("111"+stats.getMax()+"最大数");*/
++        String a="1";
++        String b="2";
++        System.out.println(a.equals(b));
++        TreeSet<String> treeSet=new TreeSet();
++        treeSet.add("");
++
++    }
++}
+Index: src/main/java/Thread/lock/DeadLock.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/lock/DeadLock.java	(date 1548666635858)
++++ src/main/java/Thread/lock/DeadLock.java	(date 1548666635858)
+@@ -0,0 +1,23 @@
++package Thread.lock;
++
++public class DeadLock {
++    private final Object left=new Object();
++    private final Object right=new Object();
++
++    public void leftRight() throws InterruptedException {
++        synchronized (left){
++            Thread.sleep(5000);
++            synchronized (right){
++                System.out.println("leftRight End!");
++            }
++        }
++    }
++    public void  rightLeft() throws InterruptedException {
++        synchronized (right){
++            Thread.sleep(5000);
++            synchronized (left){
++                System.out.println("rightLeft End!");
++            }
++        }
++    }
++}
+Index: src/main/java/Thread/lock/main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/lock/main.java	(date 1548993572386)
++++ src/main/java/Thread/lock/main.java	(date 1548993572386)
+@@ -0,0 +1,17 @@
++package Thread.lock;
++
++import java.util.concurrent.locks.Lock;
++import java.util.concurrent.locks.ReentrantLock;
++
++public class main {
++
++    public static void main(String[] args) {
++        DeadLock deadLock = new DeadLock();
++        Thread1 thread1 = new Thread1(deadLock);
++        Thread0 thread0 = new Thread0(deadLock);
++        thread0.start();
++        thread1.start();
++        Lock lock = new ReentrantLock();
++
++    }
++}
+Index: src/main/java/Thread/lock/Thread0.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/lock/Thread0.java	(date 1548667371153)
++++ src/main/java/Thread/lock/Thread0.java	(date 1548667371153)
+@@ -0,0 +1,17 @@
++package Thread.lock;
++
++public class Thread0 extends Thread{
++    private  DeadLock deadLock1;
++
++    public Thread0(DeadLock deadLock1){
++        this.deadLock1=deadLock1;
++    }
++    @Override
++    public void run() {
++        try {
++            deadLock1.leftRight();
++        } catch (InterruptedException e) {
++            e.printStackTrace();
++        }
++    }
++}
+Index: src/main/java/Thread/lock/Thread1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/lock/Thread1.java	(date 1548667377530)
++++ src/main/java/Thread/lock/Thread1.java	(date 1548667377530)
+@@ -0,0 +1,19 @@
++package Thread.lock;
++
++public class Thread1 extends Thread {
++    private DeadLock deadLock1;
++
++    public Thread1(DeadLock deadLock1){
++        this.deadLock1=deadLock1;
++    }
++
++
++    @Override
++    public void run() {
++        try {
++            deadLock1.rightLeft();
++        } catch (InterruptedException e) {
++            e.printStackTrace();
++        }
++    }
++}
+Index: src/main/java/Thread/Multithreading.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/Multithreading.java	(date 1548147703251)
++++ src/main/java/Thread/Multithreading.java	(date 1548147703251)
+@@ -0,0 +1,20 @@
++package Thread;
++
++public class Multithreading {
++    public static void main(String[] args) {
++        Thread thread = new Thread();
++
++        Runnable runnable = new Runnable(){
++            @Override
++            public void run() {
++                thread.start();
++
++            }
++        };
++
++    }
++
++
++
++
++}
+Index: src/main/java/Thread/newThread.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/newThread.java	(date 1548404601999)
++++ src/main/java/Thread/newThread.java	(date 1548404601999)
+@@ -0,0 +1,27 @@
++package Thread;
++
++public class newThread extends Thread
++{
++    private static volatile Boolean exit=true;
++
++    public newThread(String name) {
++        super(name);
++    }
++
++    public void run()
++    {
++        int i=0;
++        while(exit)
++        {
++            i++;
++        }
++    }
++
++    public static void main(String args)throws Exception
++    {
++        Thread son_1=new newThread("thread-1");
++       son_1.start();
++       sleep(5000);
++        exit=false;
++    }
++}
+Index: src/main/java/Thread/ThreadDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Thread/ThreadDemo.java	(date 1548410755501)
++++ src/main/java/Thread/ThreadDemo.java	(date 1548410755501)
+@@ -0,0 +1,26 @@
++package Thread;
++
++import java.io.IOException;
++
++public class ThreadDemo extends Thread {
++    @Override
++    public void run() {
++        try {
++            sleep(50000);
++        } catch (InterruptedException e) {
++            System.out.println(e.getMessage());
++        }
++    }
++
++    public static void main(String[] args) throws IOException, InterruptedException {
++        ThreadDemo threadDemo = new ThreadDemo();
++        threadDemo.start();
++        System.out.println("请在50秒之内按任意键中断线程");
++        int read = System.in.read();
++        threadDemo.interrupt();
++        threadDemo.join();
++        System.out.println("线程已经退出"+"时间"+read);
++
++
++    }
++}
+Index: src/main/java/Utils/importUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Utils/importUtil.java	(date 1542161437814)
++++ src/main/java/Utils/importUtil.java	(date 1542161437814)
+@@ -0,0 +1,60 @@
++package Utils;
++
++import java.io.*;
++
++/*
++   网易词典单词本导入工具
++   @date 2018-11-13
++ */
++public class importUtil {
++    public static void main(String[] args) {
++        try {
++            //源文件
++            String fileName = "C:\\SOFTWARE\\Sublime Text 3\\1700词汇";
++            FileReader file = new FileReader(fileName);
++            //导入的文件
++            String writerFileName = "C:\\SOFTWARE\\Sublime Text 3\\1.xml";
++            File f = new File(writerFileName);
++            FileWriter fw;
++            BufferedReader bufferedReader = new BufferedReader(file);
++            BufferedWriter bw;
++            int i = 0;
++            String str2 = bufferedReader.readLine();
++                str2 = bufferedReader.readLine();
++                if (f.exists()) {
++                    f.createNewFile();
++                }
++                fw = new FileWriter(writerFileName, true);
++                bw = new BufferedWriter(fw);
++                bw.write("<wordbook>");
++            while (str2 != null) {
++                str2=bufferedReader.readLine();
++                if (str2==null){
++                    continue;
++                }
++                String[] split = str2.split("[\\u4e00-\\u9fa5]");
++                String substring = str2.substring(split[0].length(), str2.length());
++                //格式
++                bw.write("<item>\n" +
++                        "        <word>"+split[0]+"</word>\n" +
++                        "    <trans><![CDATA[n. "+substring+"\n" +
++                        "vt. "+substring+"]]>   \n" +
++                        "</trans>\n" +
++                        "    <phonetic></phonetic>\n" +
++                        "    <tags>未分组</tags>\n" +
++                        "    <progress>1</progress>\n" +
++                        "</item>");
++                i++;
++            }
++            bw.write("</wordbook>");
++            System.out.println(i);
++            bufferedReader.close();
++            fw.close();
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++
++
++    }
++
++}
+Index: src/main/java/volatileDemo/volatileDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/volatileDemo/volatileDemo.java	(date 1542081208093)
++++ src/main/java/volatileDemo/volatileDemo.java	(date 1542081208093)
+@@ -0,0 +1,29 @@
++package volatileDemo;
++
++public class volatileDemo {
++    public static  volatile int inc=0;
++
++    public synchronized void increase(){
++        inc++;
++    }
++
++    public static void main(String[] args) {
++        final volatileDemo test=new volatileDemo();
++        for (int i=0;i<10;i++){
++            new Thread(){
++                @Override
++                public void run() {
++                    for (int j=0;j<1000;j++){
++                        test.increase();
++                    }
++                };
++            }.start();
++        }
++
++        while (Thread.activeCount()>1){
++            Thread.yield();
++        }
++        System.out.println(test.inc);
++
++    }
++}
+Index: src/MapTest/HashMapTest.java
+===================================================================
+--- src/MapTest/HashMapTest.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/MapTest/HashMapTest.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,22 +0,0 @@
+-package MapTest;
+-
+-import java.util.HashMap;
+-import java.util.Map;
+-import java.util.Set;
+-
+-public class HashMapTest {
+-    public static void main(String[] args) {
+-        HashMap<String, Double> hashMap = new HashMap<String, Double>();
+-        hashMap.put("zhangsan", 222d);
+-        hashMap.put("lisi", 111.1);
+-        Set<Map.Entry<String, Double>> set = hashMap.entrySet();
+-
+-        for (Map.Entry<String, Double> me : set
+-        ) {
+-            if (me.getKey() == "zhangsan") {
+-                System.out.println(me.getKey());
+-                System.out.println(me.getValue());
+-            }
+-        }
+-    }
+-}
+Index: src/methodQuote/methodQuote.java
+===================================================================
+--- src/methodQuote/methodQuote.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/methodQuote/methodQuote.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,17 +0,0 @@
+-package methodQuote;
+-
+-public class methodQuote {
+-
+-    static  String stringop(StringFunc sf,String s){
+-        return sf.func(s);
+-    }
+-
+-    public static void main(String[] args) {
+-        String inStr="lambdas add power to java";
+-        String outStr;
+-        outStr=stringop(MyStringOps::strReverses,inStr);
+-        System.out.println("out: "+outStr);
+-        System.out.println("inS: "+inStr);
+-    }
+-
+-}
+Index: src/methodQuote/MyStringOps.java
+===================================================================
+--- src/methodQuote/MyStringOps.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/methodQuote/MyStringOps.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package methodQuote;
+-
+-public class MyStringOps {
+-    static  String strReverses(String str){
+-        String result="";
+-        int i;
+-        for (i=str.length()-1;i>=0;i--){
+-            result+=str.charAt(i);
+-
+-        }
+-        return result;
+-    }
+-
+-
+-}
+Index: src/methodQuote/StringFunc.java
+===================================================================
+--- src/methodQuote/StringFunc.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/methodQuote/StringFunc.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,5 +0,0 @@
+-package methodQuote;
+-
+-public interface StringFunc {
+-    String func(String n);
+-}
+Index: src/MethodReference/Car.java
+===================================================================
+--- src/MethodReference/Car.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/MethodReference/Car.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,30 +0,0 @@
+-package MethodReference;
+-
+-import java.util.Arrays;
+-import java.util.List;
+-
+-public class Car {
+-    public static Car create(final Supplier<Car> supplier){
+-        System.out.println("cat 构造方法");
+-        return supplier.get();
+-    }
+-
+-    public static  void colliet(final Car car){
+-        System.out.println("Collided " + car.toString());
+-    }
+-
+-    public void follow (final Car anther){
+-        System.out.println("Following the "+anther.toString());
+-    }
+-    public void  repair(){
+-        System.out.println("Repai");
+-    }
+-
+-    public static void main(String[] args) {
+-        final Car car =Car.create(Car::new);
+-        final List<Car> cars= Arrays.asList(car);
+-        cars.forEach(Car::repair);
+-
+-
+-    }
+-}
+Index: src/MethodReference/Java8Tester.java
+===================================================================
+--- src/MethodReference/Java8Tester.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/MethodReference/Java8Tester.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,123 +0,0 @@
+-package MethodReference;
+-
+-import java.util.ArrayList;
+-import java.util.Arrays;
+-import java.util.List;
+-
+-public class Java8Tester {
+-    public static void main(String[] args) {
+-        // 计算空字符串
+-        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+-        System.out.println("列表: " +strings);
+-        long count = getCountEmptyStringUsingJava7(strings);
+-        System.out.println(count);
+-        count=getCountLength3UsingJava7(strings);
+-        System.out.println(count);
+-
+-    }
+-
+-    private static int getCountEmptyStringUsingJava7(List<String> strings){
+-        int count = 0;
+-
+-        for(String string: strings){
+-
+-            if(string.isEmpty()){
+-                count++;
+-            }
+-        }
+-        return count;
+-    }
+-
+-    private static int getCountLength3UsingJava7(List<String> strings){
+-        int count = 0;
+-
+-        for(String string: strings){
+-
+-            if(string.length() == 3){
+-                count++;
+-            }
+-        }
+-        return count;
+-    }
+-
+-    private static List<String> deleteEmptyStringsUsingJava7(List<String> strings){
+-        List<String> filteredList = new ArrayList<String>();
+-
+-        for(String string: strings){
+-
+-            if(!string.isEmpty()){
+-                filteredList.add(string);
+-            }
+-        }
+-        return filteredList;
+-    }
+-
+-    private static String getMergedStringUsingJava7(List<String> strings, String separator){
+-        StringBuilder stringBuilder = new StringBuilder();
+-
+-        for(String string: strings){
+-
+-            if(!string.isEmpty()){
+-                stringBuilder.append(string);
+-                stringBuilder.append(separator);
+-            }
+-        }
+-        String mergedString = stringBuilder.toString();
+-        return mergedString.substring(0, mergedString.length()-2);
+-    }
+-
+-    private static List<Integer> getSquares(List<Integer> numbers){
+-        List<Integer> squaresList = new ArrayList<Integer>();
+-
+-        for(Integer number: numbers){
+-            Integer square = new Integer(number.intValue() * number.intValue());
+-
+-            if(!squaresList.contains(square)){
+-                squaresList.add(square);
+-            }
+-        }
+-        return squaresList;
+-    }
+-
+-    private static int getMax(List<Integer> numbers){
+-        int max = numbers.get(0);
+-
+-        for(int i=1;i < numbers.size();i++){
+-
+-            Integer number = numbers.get(i);
+-
+-            if(number.intValue() > max){
+-                max = number.intValue();
+-            }
+-        }
+-        return max;
+-    }
+-
+-    private static int getMin(List<Integer> numbers){
+-        int min = numbers.get(0);
+-
+-        for(int i=1;i < numbers.size();i++){
+-            Integer number = numbers.get(i);
+-
+-            if(number.intValue() < min){
+-                min = number.intValue();
+-            }
+-        }
+-        return min;
+-    }
+-
+-    private static int getSum(List numbers){
+-        int sum = (int)(numbers.get(0));
+-
+-        for(int i=1;i < numbers.size();i++){
+-            sum += (int)numbers.get(i);
+-        }
+-        return sum;
+-    }
+-
+-    private static int getAverage(List<Integer> numbers){
+-        return getSum(numbers) / numbers.size();
+-    }
+-
+-
+-}
+Index: src/MethodReference/Supplier.java
+===================================================================
+--- src/MethodReference/Supplier.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/MethodReference/Supplier.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,6 +0,0 @@
+-package MethodReference;
+-
+-@FunctionalInterface
+-public interface Supplier<T> {
+-    T get();
+-}
+Index: src/Optional/Java8TestRr.java
+===================================================================
+--- src/Optional/Java8TestRr.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Optional/Java8TestRr.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package Optional;
+-
+-import MethodReference.Java8Tester;
+-
+-import java.util.Optional;
+-
+-public class Java8TestRr {
+-    public static void main(String[] args) {
+-        Java8TestRr Java8Tester=new Java8TestRr();
+-        Integer integer=null;
+-        Integer integer1 = new Integer(10);
+-        Optional<Integer> Integer=Optional.ofNullable(integer);
+-
+-    }
+-}
+Index: src/reflection/A.java
+===================================================================
+--- src/reflection/A.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/reflection/A.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,53 +0,0 @@
+-package reflection;
+-
+-import java.util.Objects;
+-
+-public class A {
+-    private String Test1;
+-    private String Test2;
+-
+-    public String getTest1() {
+-        return Test1;
+-    }
+-
+-    public A(String test1, String test2) {
+-        Test1 = test1;
+-        Test2 = test2;
+-    }
+-
+-    public String getTest2() {
+-        return Test2;
+-    }
+-
+-    public void setTest1(String test1) {
+-        Test1 = test1;
+-    }
+-
+-    public void setTest2(String test2) {
+-        Test2 = test2;
+-    }
+-
+-    @Override
+-    public boolean equals(Object o) {
+-        if (this == o) return true;
+-        if (o == null || getClass() != o.getClass()) return false;
+-        A a = (A) o;
+-        return Objects.equals(Test1, a.Test1) &&
+-                Objects.equals(Test2, a.Test2);
+-    }
+-
+-    @Override
+-    public int hashCode() {
+-        return Objects.hash(Test1, Test2);
+-    }
+-
+-    @Override
+-    public String toString() {
+-        return "A{" +
+-                "Test1='" + Test1 + '\'' +
+-                ", Test2='" + Test2 + '\'' +
+-                '}';
+-    }
+-
+-
+-}
+Index: src/reflection/Constructors.java
+===================================================================
+--- src/reflection/Constructors.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/reflection/Constructors.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,61 +0,0 @@
+-package fanshe;
+-
+-import java.lang.reflect.Constructor;
+-
+-
+-/*
+- * 通过Class对象可以获取某个类中的：构造方法、成员变量、成员方法；并访问成员；
+- *
+- * 1.获取构造方法：
+- * 		1).批量的方法：
+- * 			public Constructor[] getConstructors()：所有"公有的"构造方法
+-            public Constructor[] getDeclaredConstructors()：获取所有的构造方法(包括私有、受保护、默认、公有)
+-
+- * 		2).获取单个的方法，并调用：
+- * 			public Constructor getConstructor(Class... parameterTypes):获取单个的"公有的"构造方法：
+- * 			public Constructor getDeclaredConstructor(Class... parameterTypes):获取"某个构造方法"可以是私有的，或受保护、默认、公有；
+- *
+- * 			调用构造方法：
+- * 			Constructor-->newInstance(Object... initargs)
+- */
+-public class Constructors {
+-
+-    public static void main(String[] args) throws Exception {
+-        //1.加载Class对象
+-        Class clazz = Class.forName("reflection.Student");
+-
+-
+-        //2.获取所有公有构造方法
+-        System.out.println("**********************所有公有构造方法*********************************");
+-        Constructor[] conArray = clazz.getConstructors();
+-        for(Constructor c : conArray){
+-            System.out.println(c);
+-        }
+-
+-
+-        System.out.println("************所有的构造方法(包括：私有、受保护、默认、公有)***************");
+-        conArray = clazz.getDeclaredConstructors();
+-        for(Constructor c : conArray){
+-            System.out.println(c);
+-        }
+-
+-        System.out.println("*****************获取公有、无参的构造方法*******************************");
+-        Constructor con = clazz.getConstructor(null);
+-        //1>、因为是无参的构造方法所以类型是一个null,不写也可以：这里需要的是一个参数的类型，切记是类型
+-        //2>、返回的是描述这个无参构造函数的类对象。
+-
+-        System.out.println("con = " + con);
+-        //调用构造方法
+-        Object obj = con.newInstance();
+-        //	System.out.println("obj = " + obj);
+-        //	Student stu = (Student)obj;
+-
+-        System.out.println("******************获取私有构造方法，并调用*******************************");
+-        con = clazz.getDeclaredConstructor(char.class);
+-        System.out.println(con);
+-        //调用构造方法
+-        con.setAccessible(true);//暴力访问(忽略掉访问修饰符)
+-        obj = con.newInstance('男');
+-    }
+-
+-}
+Index: src/reflection/MethodDemo.java
+===================================================================
+--- src/reflection/MethodDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/reflection/MethodDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,25 +0,0 @@
+-package reflection;
+-
+-import java.lang.reflect.Method;
+-import java.text.SimpleDateFormat;
+-import java.util.Date;
+-
+-public class MethodDemo {
+-    public static void main(String[] args) {
+-
+-
+-
+-    }
+-
+-    private void classDemo(Object A,Object B){
+-        Method[] methodsA = A.getClass().getMethods();
+-        Method[] methodsB = B.getClass().getMethods();
+-        for (Method method:methodsA
+-             ) {
+-            method.invoke(A,B);
+-            
+-        }
+-    }
+-
+-
+-}
+Index: src/reflection/Student.java
+===================================================================
+--- src/reflection/Student.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/reflection/Student.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,36 +0,0 @@
+-package reflection;
+-
+-public class Student {
+-
+-    //---------------构造方法-------------------
+-    //（默认的构造方法）
+-    Student(String str){
+-        System.out.println("(默认)的构造方法 s = " + str);
+-    }
+-
+-    //无参构造方法
+-    public Student(){
+-        System.out.println("调用了公有、无参构造方法执行了。。。");
+-    }
+-
+-    //有一个参数的构造方法
+-    public Student(char name){
+-        System.out.println("姓名：" + name);
+-    }
+-
+-    //有多个参数的构造方法
+-    public Student(String name ,int age){
+-        System.out.println("姓名："+name+"年龄："+ age);//这的执行效率有问题，以后解决。
+-    }
+-
+-    //受保护的构造方法
+-    protected Student(boolean n){
+-        System.out.println("受保护的构造方法 n = " + n);
+-    }
+-
+-    //私有构造方法
+-    private Student(int age){
+-        System.out.println("私有的构造方法   年龄："+ age);
+-    }
+-
+-}
+Index: src/simpleDemo/singletonDemo.java
+===================================================================
+--- src/simpleDemo/singletonDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/simpleDemo/singletonDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,16 +0,0 @@
+-package simpleDemo;
+-
+-public class singletonDemo {
+-
+-    private final static singletonDemo singleton = new singletonDemo();
+-
+-    private singletonDemo() {
+-
+-    }
+-
+-    public static singletonDemo getSimpleDemo() {
+-        return singleton;
+-
+-    }
+-
+-}
+Index: src/simpleDemo/singletonDemo1.java
+===================================================================
+--- src/simpleDemo/singletonDemo1.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/simpleDemo/singletonDemo1.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package simpleDemo;
+-
+-//静态内部类
+-public class singletonDemo1 {
+-
+-    private singletonDemo1(){};
+-
+-    private static class singletonInstance{
+-         private static final singletonDemo1 singletonInstarnce=new singletonDemo1();
+-    }
+-
+-    public static singletonDemo1 getInstance(){
+-        return singletonInstance.singletonInstarnce;
+-    }
+-}
+Index: src/simpleDemo/singletonDemo2.java
+===================================================================
+--- src/simpleDemo/singletonDemo2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/simpleDemo/singletonDemo2.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,19 +0,0 @@
+-package simpleDemo;
+-
+-//双重检查
+-public class singletonDemo2 {
+-    private static volatile singletonDemo2 singleton;
+-
+-    private singletonDemo2(){};
+-
+-    public static singletonDemo2 getInstance(){
+-        if (singleton==null){
+-            synchronized(singletonDemo2.class){
+-                if (singleton == null){
+-                    return new singletonDemo2();
+-                }
+-            }
+-        }
+-        return  singleton;
+-    }
+-}
+Index: src/Test/same.js
+===================================================================
+--- src/Test/same.js	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Test/same.js	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,1 +0,0 @@
+-print("Hello Word");
+\ No newline at end of file
+Index: src/Test/staticImpl.java
+===================================================================
+--- src/Test/staticImpl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Test/staticImpl.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,15 +0,0 @@
+-package Test;
+-
+-import static java.lang.Math.pow;
+-import static java.lang.StrictMath.sqrt;
+-
+-public class staticImpl {
+-    public static void main(String[] args) {
+-        double side1,side2;
+-        double hypot;
+-        side1=3.0;
+-        side2=4.0;
+-        hypot=sqrt(pow(side1,2))+pow(side2,2);
+-
+-    }
+-}
+Index: src/Test/test.java
+===================================================================
+--- src/Test/test.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Test/test.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,55 +0,0 @@
+-package Test;
+-
+-
+-import java.util.ArrayList;
+-import java.util.TreeSet;
+-
+-public class test {
+- /*   public void Test(){
+-        T vals[];
+-    }*/
+-
+-    public static void main(String[] args) {
+-/*        Runtime runtime = Runtime.getRuntime();
+-        long mem1,mem2;
+-        Integer someints[]=new Integer[1000];
+-        mem1 = runtime.freeMemory();
+-        System.out.println("Total memory is:"+ runtime.totalMemory());
+-        mem1= runtime.freeMemory();
+-        System.out.println("Initial free memory:"+ mem1);
+-        runtime.gc();
+-        mem1=runtime.freeMemory();
+-        System.out.println("Free memory "+mem1);
+-
+-        for (int i=0;i<1000;i++)
+-            someints=new Integer[i];
+-
+-        mem2=runtime.freeMemory();
+-        System.out.println("Free memory after allocation:" + mem2);
+-        System.out.println(mem2-mem1);
+-
+-
+-
+-        Class<?> cla = test.class.getClass();*/
+-
+-        /*List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+-
+-        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
+-
+-        System.out.println("列表中最大的数 : " + stats.getMax());
+-        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
+-        List<String> filed=strings.stream().filter(string->!string.isEmpty()).collect(Collectors.toList());
+-        List<Integer> number2 = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+-
+-        List<Integer> integers = number2.stream().map(i -> i * i).distinct().collect(Collectors.toList());
+-
+-        number2.forEach(System.out::println);
+-        System.out.println("111"+stats.getMax()+"最大数");*/
+-        String a="1";
+-        String b="2";
+-        System.out.println(a.equals(b));
+-        TreeSet<String> treeSet=new TreeSet();
+-        treeSet.add("");
+-
+-    }
+-}
+Index: src/Utils/importUtil.java
+===================================================================
+--- src/Utils/importUtil.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/Utils/importUtil.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,60 +0,0 @@
+-package Utils;
+-
+-import java.io.*;
+-
+-/*
+-   网易词典单词本导入工具
+-   @date 2018-11-13
+- */
+-public class importUtil {
+-    public static void main(String[] args) {
+-        try {
+-            //源文件
+-            String fileName = "C:\\SOFTWARE\\Sublime Text 3\\1700词汇";
+-            FileReader file = new FileReader(fileName);
+-            //导入的文件
+-            String writerFileName = "C:\\SOFTWARE\\Sublime Text 3\\1.xml";
+-            File f = new File(writerFileName);
+-            FileWriter fw;
+-            BufferedReader bufferedReader = new BufferedReader(file);
+-            BufferedWriter bw;
+-            int i = 0;
+-            String str2 = bufferedReader.readLine();
+-                str2 = bufferedReader.readLine();
+-                if (f.exists()) {
+-                    f.createNewFile();
+-                }
+-                fw = new FileWriter(writerFileName, true);
+-                bw = new BufferedWriter(fw);
+-                bw.write("<wordbook>");
+-            while (str2 != null) {
+-                str2=bufferedReader.readLine();
+-                if (str2==null){
+-                    continue;
+-                }
+-                String[] split = str2.split("[\\u4e00-\\u9fa5]");
+-                String substring = str2.substring(split[0].length(), str2.length());
+-                //格式
+-                bw.write("<item>\n" +
+-                        "        <word>"+split[0]+"</word>\n" +
+-                        "    <trans><![CDATA[n. "+substring+"\n" +
+-                        "vt. "+substring+"]]>   \n" +
+-                        "</trans>\n" +
+-                        "    <phonetic></phonetic>\n" +
+-                        "    <tags>未分组</tags>\n" +
+-                        "    <progress>1</progress>\n" +
+-                        "</item>");
+-                i++;
+-            }
+-            bw.write("</wordbook>");
+-            System.out.println(i);
+-            bufferedReader.close();
+-            fw.close();
+-        } catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-
+-
+-    }
+-
+-}
+Index: src/volatileDemo/volatileDemo.java
+===================================================================
+--- src/volatileDemo/volatileDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
++++ src/volatileDemo/volatileDemo.java	(revision 300e176f0e52eb755e53dd4f48fd6f0c4db51443)
+@@ -1,29 +0,0 @@
+-package volatileDemo;
+-
+-public class volatileDemo {
+-    public static  volatile int inc=0;
+-
+-    public synchronized void increase(){
+-        inc++;
+-    }
+-
+-    public static void main(String[] args) {
+-        final volatileDemo test=new volatileDemo();
+-        for (int i=0;i<10;i++){
+-            new Thread(){
+-                @Override
+-                public void run() {
+-                    for (int j=0;j<1000;j++){
+-                        test.increase();
+-                    }
+-                };
+-            }.start();
+-        }
+-
+-        while (Thread.activeCount()>1){
+-            Thread.yield();
+-        }
+-        System.out.println(test.inc);
+-
+-    }
+-}

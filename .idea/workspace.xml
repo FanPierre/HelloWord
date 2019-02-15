@@ -1,75 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a866a1b-b45e-4fa0-9493-f6938862ce3f" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/te.iml" afterPath="$PROJECT_DIR$/.idea/te.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="1a866a1b-b45e-4fa0-9493-f6938862ce3f" name="Default Changelist" comment="Java知识">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.classpath" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/te_war_exploded.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/te_war_exploded2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_03.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_6.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_14.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_14.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_0_RC3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_2_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_2_RELEASE.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_0_RC3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_Release.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_thymeleaf_thymeleaf_spring3_Release.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.project" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/.gitattributes" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/ArrayList-Grow.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/ArrayList.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/HashMap.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/J2EE基础知识.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Java IO与NIO.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Java基础知识.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Java虚拟机（jvm）.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Java集合框架常见面试题总结.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/LinkedList.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Multithread/AQS.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Multithread/Atomic.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Multithread/BATJ都爱问的多线程面试题.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/Multithread/并发容器总结.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/final、static、this、super.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/static.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/synchronized.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/可能是把Java内存区域讲的最清楚的一篇文章.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/多线程系列.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/搞定JVM垃圾回收就是这么简单.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/设计模式.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/Java相关/这几道Java集合框架面试题几乎必问.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/主流框架/SpringBean.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/主流框架/SpringMVC 工作原理详解.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/主流框架/Spring学习与面试.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/主流框架/ZooKeeper.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/主流框架/ZooKeeper数据模型和常见命令.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/其他/2018 summary.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/其他/2018 秋招.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/其他/个人阅读书籍清单.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/其他/选择技术方向都要考虑哪些因素.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/操作系统/Shell.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/操作系统/后端程序员必备的Linux基础知识.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据存储/MySQL Index.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据存储/MySQL.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据存储/Redis/Redis.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据存储/Redis/Redis持久化.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据存储/Redis/Redlock分布式锁.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据存储/Redis/如何做可靠的分布式锁，Redlock真的可行么.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/Leetcode-LinkList1.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/.classpath" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/.project" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/.settings/org.eclipse.core.resources.prefs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/.settings/org.eclipse.jdt.core.prefs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/.settings/org.eclipse.m2e.core.prefs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/securityAlgorithm.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/Base64Demo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/DesDemo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/IDEADemo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/MD5.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/MD5Demo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/RSADemo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/SHA1Demo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/main/java/com/snailclimb/ks/securityAlgorithm/readme" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/source code/securityAlgorithm/src/test/java/com/snailclimb/ks/securityAlgorithm/AppTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/常见安全算法（MD5、SHA1、Base64等等）总结.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/搞定BAT面试——几道常见的子符串算法题.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/数据结构.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法题解析/公司真题/网易2018校招编程题1-3.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法题解析/剑指offer/（1）斐波那契数列问题和跳台阶问题.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法题解析/剑指offer/（2）二维数组查找和替换空格问题.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法题解析/剑指offer/（3）数值的整数次方和调整数组元素顺序.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法题解析/剑指offer/（4）链表相关编程题.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/数据结构与算法/算法题解析/剑指offer/（5）栈变队列和栈的压入、弹出序列.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/架构/分布式.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/计算机网络与数据通信/dubbo.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/计算机网络与数据通信/message-queue.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/计算机网络与数据通信/rabbitmq.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/计算机网络与数据通信/干货：计算机网络知识总结.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/计算机网络与数据通信/数据通信(RESTful、RPC、消息队列).md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/计算机网络与数据通信/计算机网络.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/JavaInterviewGithub.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/books.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/interviewPrepare.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/java programmer need know.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/手把手教你用Markdown写一份高质量的简历.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/最最最常见的Java面试题总结/第一周（2018-8-7）.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/最最最常见的Java面试题总结/第二周(2018-8-13).md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/最最最常见的Java面试题总结/第四周(2018-8-30).md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/程序员的简历之道.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/简历模板.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/美团-基础篇.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/美团-终结篇.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/美团-进阶篇.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/JavaGuide/面试必备/面试必备之乐观锁与悲观锁.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cas/VolatileTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/test/test.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/test/test1.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/index.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/新.patch" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/.idea/te.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/.idea/uiDesigner.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Anno/Meta.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Anno/MyAnno.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDemo1/Client.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDemo1/Component.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDemo1/ConcreteComponent.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDemo1/ConcreteDecorator1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDemo1/ConcreteDecorator2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDemo1/Decorator.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDeno2/GiveCurrentTimePhone.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDeno2/IPhone.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDeno2/MusicPhone.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDeno2/Phone.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DecoratorDeno2/PhoneDecorate.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DefaultInterface/MyInterface.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DefaultInterface/MyInterface2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/DefaultInterface/MyInterfaceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Exception/ChainExcDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Exception/ExceptionDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Exception/MultiCatch.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Gen/Gen.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Gen/Gen2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Gen/GenDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/BlockLambdaDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/GenericFunctionalInterfaceDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemo$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemo1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemo1Impl$LambdaDemo1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemo1Impl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemoParam.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/LambdaDemoParamImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/NumericFunc.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Lambda/SomeFunc.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/MapTest/HashMapTest.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/MethodReference/Car.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/MethodReference/Java8Tester.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/MethodReference/Supplier.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Optional/Java8TestRr.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Test/staticImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Test/test.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/Utils/importUtil.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/collection/ArrayListDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/collection/CollerctionDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/date/Date.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/fanshe/Constructors.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/methodQuote/MyStringOps.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/methodQuote/StringFunc.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/methodQuote/methodQuote.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/reflection/A.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/reflection/MethodDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/reflection/Student.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/simpleDemo/singletonDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/simpleDemo/singletonDemo1$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/simpleDemo/singletonDemo1$singletonInstance.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/simpleDemo/singletonDemo1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/simpleDemo/singletonDemo2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/volatileDemo/volatileDemo$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/te/volatileDemo/volatileDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/date/Date.java" afterPath="$PROJECT_DIR$/date/Date.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -168,7 +226,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="synchronized.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="synchronized.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/JavaGuide/Java相关/synchronized.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -179,6 +237,34 @@
                   <marker date="1550125442884" expanded="true" signature="1755:2074" ph="{...}" />
                   <marker date="1550125442884" expanded="true" signature="2705:2780" ph="{...}" />
                 </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="可能是把Java内存区域讲的最清楚的一篇文章.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/JavaGuide/Java相关/可能是把Java内存区域讲的最清楚的一篇文章.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding>
+                  <marker date="1550125442886" expanded="true" signature="8845:8896" ph="/**...*/" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Java IO与NIO.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/JavaGuide/Java相关/Java IO与NIO.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding />
               </first_editor>
               <second_editor />
             </state>
@@ -358,6 +444,22 @@
             <path>
               <item name="HelloWord" type="b2602c69:ProjectViewProjectNode" />
               <item name="HelloWord" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelloWord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelloWord" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelloWord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelloWord" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelloWord" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelloWord" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -663,7 +765,7 @@
       <workItem from="1548643557513" duration="4764000" />
       <workItem from="1548913698437" duration="12572000" />
       <workItem from="1550126325013" duration="6149000" />
-      <workItem from="1550201525367" duration="3825000" />
+      <workItem from="1550201525367" duration="5558000" />
     </task>
     <task id="LOCAL-00001" summary="新">
       <created>1549016904338</created>
@@ -679,11 +781,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549017028171</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="新增">
+      <created>1550222810701</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1550222810702</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200017000" />
+    <option name="totallyTimeSpent" value="201750000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -741,7 +850,8 @@
     </ignored-roots>
     <MESSAGE value="新" />
     <MESSAGE value="新增" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增" />
+    <MESSAGE value="Java知识" />
+    <option name="LAST_COMMIT_MESSAGE" value="Java知识" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -774,20 +884,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/reflection/Constructors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/introspector/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Gen/GenDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -1191,6 +1287,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/JavaGuide/Java相关/可能是把Java内存区域讲的最清楚的一篇文章.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1550125442886" expanded="true" signature="8845:8896" ph="/**...*/" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/JavaGuide/Java相关/Java IO与NIO.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1250,6 +1370,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
