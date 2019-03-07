@@ -61,6 +61,12 @@ public class MethodDemo {
         try {
             //获取字节码
             Class<?> stuClass = Class.forName("reflection.Student");
+            Student student1 = new Student();
+            //获类的方法
+            Method setAge = stuClass.getDeclaredMethod("setAge", Integer.class);
+            setAge.setAccessible(true);
+            setAge.invoke(student1,18);
+
             Class clazz2 = Student.class;
             //创建对象
             Object obj = new Student();

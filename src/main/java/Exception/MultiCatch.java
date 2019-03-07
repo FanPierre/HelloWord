@@ -1,6 +1,10 @@
 package Exception;
 
-public class MultiCatch  {
+public class MultiCatch extends ExceptionDemo  {
+
+
+    public MultiCatch() {
+    }
 
     public static void main(String[] args) {
        String str="abc";

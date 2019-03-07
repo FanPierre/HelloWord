@@ -1,7 +1,7 @@
 package Exception;
 
 public class ExceptionDemo extends Exception {
-    private String detail;
+   /* private String detail;
 
     @Override
     public String toString() {
@@ -12,5 +12,8 @@ public class ExceptionDemo extends Exception {
 
     public ExceptionDemo(String detail) {
         this.detail = detail;
+    }*/
+
+    public ExceptionDemo() {
     }
 }
