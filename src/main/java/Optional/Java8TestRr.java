@@ -1,7 +1,5 @@
 package Optional;
 
-import MethodReference.Java8Tester;
-
 import java.util.Optional;
 
 public class Java8TestRr {
@@ -9,7 +7,9 @@ public class Java8TestRr {
         Java8TestRr Java8Tester=new Java8TestRr();
         Integer integer=null;
         Integer integer1 = new Integer(10);
-        Optional<Integer> Integer=Optional.ofNullable(integer);
+        Optional<Integer> optional=Optional.ofNullable(integer);
+        System.out.println(optional);
+
 
     }
 }

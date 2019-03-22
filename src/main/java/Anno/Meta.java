@@ -4,7 +4,7 @@ package Anno;
 import java.lang.reflect.Method;
 
 public class Meta {
-    @MyAnno
+    @MyAnno(str = "额")
     public static void myMeta(){
         Meta meta = new Meta();
         try {

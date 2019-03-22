@@ -1,9 +1,11 @@
 package Gen;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * 比较器
+ */
 public class GenDemo {
     public static void main(String[] args) {
 
