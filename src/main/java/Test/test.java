@@ -1,19 +1,16 @@
 package Test;
 
 
+import java.math.BigDecimal;
+
 public class test {
     public test() {
     }
 
     public static void main(String[] args) {
-        String str="  ";
-        if (str.trim()==null){
-            System.out.println(str.length());
-        }
-        System.out.println("str 為null");
 
-
-
+        final BigDecimal bigDecimal = new BigDecimal("5");
+        bigDecimal.compareTo(new BigDecimal(5.00));
 
     }
 }

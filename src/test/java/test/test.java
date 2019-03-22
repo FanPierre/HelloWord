@@ -13,20 +13,9 @@ import java.util.HashSet;
 public class test {
 	public static void main(String[] args) {
 		ArrayList<Object> list = new ArrayList<>();
-		list.add("1");
-		list.add("2");
-		list.add("3");
-		System.out.println("list:"+list);
-		ArrayList<Object> list2 = new ArrayList<>();
-		list2.add("1");
-		list2.add("2");
-		list2.add("4");
-		System.out.println("list2:"+list2);
-		HashSet<Object> hashSet = new HashSet<>();
-		hashSet.addAll(list);
-		hashSet.addAll(list2);
-		System.out.println("hashSet:"+hashSet);
-		
+		ArrayList<Object> list1 = new ArrayList<>();
+
+
 	}
 	
 
