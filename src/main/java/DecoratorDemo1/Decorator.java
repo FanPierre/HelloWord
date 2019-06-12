@@ -1,5 +1,8 @@
 package DecoratorDemo1;
 
+/**
+ * 装饰器接口
+ */
 public abstract class Decorator extends Component {
     private Component component = null;
 
