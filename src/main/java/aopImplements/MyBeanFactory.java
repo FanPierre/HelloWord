@@ -16,9 +16,11 @@ public class MyBeanFactory {
     //JDK动态代理
     public static UserService createUserServiceAop(){
         final UserService userService = new UserServiceImpl();
-        MyAspect myAspect = new MyAspect();
-        UserService proxyService = (UserService) Proxy.newProxyInstance(MyBeanFactory.class.getClassLoader(), userService.getClass().getInterfaces(), new InvocationHandler() {
-            @Override
+        final MyAspect myAspect = new MyAspect();
+        //创建代理实例
+        UserService proxyService = (UserService) Proxy.newProxyInstance(MyBeanFactory.class.getClassLoader(),
+                userService.getClass().getInterfaces(), new InvocationHandler() {
+
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                //调用之前
                 myAspect.before();
@@ -27,8 +29,7 @@ public class MyBeanFactory {
                 //调用之后
                 myAspect.after();
                 return obj;
-            }
-            ;
+            };
         });
         return proxyService;
     }
@@ -42,7 +43,7 @@ public class MyBeanFactory {
         enhancer.setSuperclass(userService.getClass());
         //指定调用
         enhancer.setCallback(new MethodInterceptor() {
-            @Override
+
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                 myAspect.before();
                // 两种方式
@@ -56,4 +57,27 @@ public class MyBeanFactory {
         UserServiceImpl userService1=(UserServiceImpl)enhancer.create();
         return userService1;
     }
+
+
+   public static UserService doCglib(){
+       Enhancer enhancer = new Enhancer();
+       MyAspect myAspect = new MyAspect();
+
+       UserServiceImpl userService = new UserServiceImpl();
+       enhancer.setSuperclass(userService.getClass());
+       enhancer.setCallback(new MethodInterceptor() {
+           @Override
+           public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+               //代理方法
+               myAspect.before();
+               //调用方法
+               Object invoke = methodProxy.invoke(o,objects);
+
+               myAspect.after();
+               return invoke;
+           }
+       });
+       UserServiceImpl userService1=(UserServiceImpl)enhancer.create();
+       return userService1;
+   }
 }

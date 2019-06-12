@@ -8,7 +8,7 @@ public interface UserService {
         System.out.println(1);
     }
 
-    public void addUser();
+    void addUser();
     void updateUser();
     void deleteUser();
 
